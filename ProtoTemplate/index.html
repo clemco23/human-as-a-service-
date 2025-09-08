@@ -22,6 +22,7 @@
                     <li><a href="#" data-page="cats" class="nav-link">Chats disponibles</a></li>
                     <li><a href="#" data-page="about" class="nav-link">À propos</a></li>
                     <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+                    <li><a href="#" data-page="login" class="nav-link">Connexion Chat</a></li>
                 </ul>
                 <div class="cart-container">
                     <div class="cart-icon" id="cart-icon">
@@ -371,6 +372,284 @@
                                         <span id="checkout-total">0€</span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Login Page -->
+            <section id="login" class="page">
+                <div class="container">
+                    <div class="auth-container">
+                        <div class="auth-card">
+                            <div class="auth-header">
+                                <div class="auth-icon">
+                                    <i class="fas fa-cat"></i>
+                                </div>
+                                <h1>Connexion Féline</h1>
+                                <p>Connectez-vous pour trouver votre humain parfait</p>
+                            </div>
+                            
+                            <form class="auth-form" id="login-form">
+                                <div class="form-group">
+                                    <label for="cat-name-login">Nom de chat</label>
+                                    <input type="text" id="cat-name-login" placeholder="Whiskers, Luna, Simba..." required>
+                                    <i class="fas fa-paw form-icon"></i>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="password-login">Mot de passe</label>
+                                    <input type="password" id="password-login" placeholder="Votre mot de passe secret" required>
+                                    <i class="fas fa-lock form-icon"></i>
+                                </div>
+                                
+                                <div class="form-options">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="remember-me">
+                                        <span class="checkmark"></span>
+                                        Se souvenir de moi
+                                    </label>
+                                    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary auth-btn">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    Se connecter
+                                </button>
+                            </form>
+                            
+                            <div class="auth-footer">
+                                <p>Pas encore inscrit ?</p>
+                                <button class="btn btn-secondary" data-page="register">
+                                    <i class="fas fa-user-plus"></i>
+                                    Créer un compte chat
+                                </button>
+                            </div>
+                            
+                            <div class="auth-features">
+                                <h3>Pourquoi créer un compte ?</h3>
+                                <ul>
+                                    <li><i class="fas fa-heart"></i> Créez votre profil de chat unique</li>
+                                    <li><i class="fas fa-search"></i> Parcourez les profils d'humains</li>
+                                    <li><i class="fas fa-star"></i> Sauvegardez vos humains favoris</li>
+                                    <li><i class="fas fa-comments"></i> Communiquez avec vos matchs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Register Page -->
+            <section id="register" class="page">
+                <div class="container">
+                    <div class="auth-container">
+                        <div class="auth-card register-card">
+                            <div class="auth-header">
+                                <div class="auth-icon">
+                                    <i class="fas fa-cat"></i>
+                                    <i class="fas fa-plus register-plus"></i>
+                                </div>
+                                <h1>Inscription Féline</h1>
+                                <p>Rejoignez PawMatch et trouvez votre humain idéal</p>
+                            </div>
+                            
+                            <form class="auth-form register-form" id="register-form">
+                                <div class="form-step active" id="step-1">
+                                    <h3><i class="fas fa-user-circle"></i> Informations de base</h3>
+                                    
+                                    <div class="form-group">
+                                        <label for="cat-name-register">Nom de chat *</label>
+                                        <input type="text" id="cat-name-register" placeholder="Votre nom de chat" required>
+                                        <i class="fas fa-paw form-icon"></i>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="cat-age">Âge *</label>
+                                            <select id="cat-age" required>
+                                                <option value="">Choisir...</option>
+                                                <option value="chaton">Chaton (0-1 an)</option>
+                                                <option value="jeune">Jeune (1-3 ans)</option>
+                                                <option value="adulte">Adulte (3-8 ans)</option>
+                                                <option value="senior">Senior (8+ ans)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="cat-gender">Genre</label>
+                                            <select id="cat-gender">
+                                                <option value="">Choisir...</option>
+                                                <option value="male">Mâle</option>
+                                                <option value="female">Femelle</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="cat-breed">Race</label>
+                                        <input type="text" id="cat-breed" placeholder="Européen, Persan, Maine Coon...">
+                                        <i class="fas fa-dna form-icon"></i>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                                        Suivant <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="form-step" id="step-2">
+                                    <h3><i class="fas fa-heart"></i> Personnalité</h3>
+                                    
+                                    <div class="form-group">
+                                        <label for="cat-personality">Personnalité principale *</label>
+                                        <select id="cat-personality" required>
+                                            <option value="">Choisir...</option>
+                                            <option value="calme">Calme et posé</option>
+                                            <option value="joueur">Joueur et énergique</option>
+                                            <option value="independant">Indépendant</option>
+                                            <option value="affectueux">Affectueux et câlin</option>
+                                            <option value="curieux">Curieux et explorateur</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="cat-description">Description *</label>
+                                        <textarea id="cat-description" rows="4" placeholder="Décrivez-vous en quelques mots... Qu'est-ce qui vous rend unique ?" required></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="cat-emoji">Votre emoji représentatif</label>
+                                        <select id="cat-emoji">
+                                            <option value="🐱">🐱 Chat classique</option>
+                                            <option value="😻">😻 Chat amoureux</option>
+                                            <option value="🌙">🌙 Chat mystérieux</option>
+                                            <option value="🐅">🐅 Chat tigré</option>
+                                            <option value="🌫️">🌫️ Chat discret</option>
+                                            <option value="💕">💕 Chat affectueux</option>
+                                            <option value="⭐">⭐ Chat star</option>
+                                            <option value="🎭">🎭 Chat théâtral</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-navigation">
+                                        <button type="button" class="btn btn-secondary" onclick="prevStep(1)">
+                                            <i class="fas fa-arrow-left"></i> Précédent
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                                            Suivant <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-step" id="step-3">
+                                    <h3><i class="fas fa-search"></i> Recherche d'humain</h3>
+                                    
+                                    <div class="form-group">
+                                        <label for="looking-for">Type d'humain recherché *</label>
+                                        <textarea id="looking-for" rows="4" placeholder="Décrivez le type d'humain que vous recherchez... Actif ? Calme ? Avec du temps libre ?" required></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Préférences de logement</label>
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-container">
+                                                <input type="checkbox" name="housing" value="appartement">
+                                                <span class="checkmark"></span>
+                                                Appartement
+                                            </label>
+                                            <label class="checkbox-container">
+                                                <input type="checkbox" name="housing" value="maison">
+                                                <span class="checkmark"></span>
+                                                Maison avec jardin
+                                            </label>
+                                            <label class="checkbox-container">
+                                                <input type="checkbox" name="housing" value="balcon">
+                                                <span class="checkmark"></span>
+                                                Avec balcon/terrasse
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Autres animaux acceptés</label>
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-container">
+                                                <input type="checkbox" name="other-pets" value="chats">
+                                                <span class="checkmark"></span>
+                                                Autres chats
+                                            </label>
+                                            <label class="checkbox-container">
+                                                <input type="checkbox" name="other-pets" value="chiens">
+                                                <span class="checkmark"></span>
+                                                Chiens
+                                            </label>
+                                            <label class="checkbox-container">
+                                                <input type="checkbox" name="other-pets" value="seul">
+                                                <span class="checkmark"></span>
+                                                Préfère être seul
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-navigation">
+                                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">
+                                            <i class="fas fa-arrow-left"></i> Précédent
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="nextStep(4)">
+                                            Suivant <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-step" id="step-4">
+                                    <h3><i class="fas fa-lock"></i> Sécurité</h3>
+                                    
+                                    <div class="form-group">
+                                        <label for="email-register">Email de contact</label>
+                                        <input type="email" id="email-register" placeholder="votre.humain@email.com">
+                                        <i class="fas fa-envelope form-icon"></i>
+                                        <small>Pour que votre futur humain puisse vous contacter</small>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="password-register">Mot de passe *</label>
+                                        <input type="password" id="password-register" placeholder="Créez un mot de passe sécurisé" required>
+                                        <i class="fas fa-lock form-icon"></i>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="password-confirm">Confirmer le mot de passe *</label>
+                                        <input type="password" id="password-confirm" placeholder="Répétez votre mot de passe" required>
+                                        <i class="fas fa-lock form-icon"></i>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" id="terms-register" required>
+                                            <span class="checkmark"></span>
+                                            J'accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-navigation">
+                                        <button type="button" class="btn btn-secondary" onclick="prevStep(3)">
+                                            <i class="fas fa-arrow-left"></i> Précédent
+                                        </button>
+                                        <button type="submit" class="btn btn-primary auth-btn">
+                                            <i class="fas fa-paw"></i>
+                                            Créer mon profil
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            <div class="auth-footer">
+                                <p>Déjà inscrit ?</p>
+                                <button class="btn btn-secondary" data-page="login">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    Se connecter
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -92,10 +92,11 @@ let cartTotal = 0;
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeFilters();
-    renderCats();
-    initializeForms();
-    initializeMobileMenu();
     initializeCart();
+    initializeAuth();
+    renderCats();
+    showPage('home');
+    initializeMobileMenu();
     loadCartFromStorage();
 });
 
@@ -539,6 +540,9 @@ function initializeCart() {
             }
         });
     });
+    
+    // Initialize auth system
+    initializeAuth();
 }
 
 function addToCart(catId) {
@@ -843,3 +847,298 @@ function showWelcomeMessage() {
 
 // Afficher le message de bienvenue après un court délai
 setTimeout(showWelcomeMessage, 1500);
+
+// Authentication System
+function initializeAuth() {
+    // Login form handling
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLogin);
+    }
+
+    // Register form handling
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+        registerForm.addEventListener('submit', handleRegister);
+        initializeRegisterSteps();
+    }
+
+    // Check if user is already logged in
+    checkAuthStatus();
+}
+
+function handleLogin(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const catName = formData.get('catName');
+    const password = formData.get('password');
+    const rememberMe = formData.get('rememberMe');
+    
+    // Basic validation
+    if (!catName || !password) {
+        showNotification('Veuillez remplir tous les champs requis', 'error');
+        return;
+    }
+    
+    // Simulate login process
+    const loginBtn = document.querySelector('.auth-btn');
+    const originalText = loginBtn.innerHTML;
+    loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connexion...';
+    loginBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Simulate successful login
+        const userData = {
+            name: catName,
+            loginTime: new Date().toISOString(),
+            rememberMe: rememberMe
+        };
+        
+        // Store user data
+        if (rememberMe) {
+            localStorage.setItem('pawmatch_user', JSON.stringify(userData));
+        } else {
+            sessionStorage.setItem('pawmatch_user', JSON.stringify(userData));
+        }
+        
+        showNotification(`🐾 Bienvenue ${catName} ! Vous êtes maintenant connecté(e).`, 'success');
+        updateAuthUI(userData);
+        showPage('home');
+        
+        loginBtn.innerHTML = originalText;
+        loginBtn.disabled = false;
+    }, 1500);
+}
+
+let currentRegisterStep = 1;
+const totalRegisterSteps = 4;
+
+function initializeRegisterSteps() {
+    const nextBtns = document.querySelectorAll('.next-step');
+    const prevBtns = document.querySelectorAll('.prev-step');
+    
+    nextBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (validateCurrentStep()) {
+                nextRegisterStep();
+            }
+        });
+    });
+    
+    prevBtns.forEach(btn => {
+        btn.addEventListener('click', prevRegisterStep);
+    });
+    
+    updateRegisterProgress();
+}
+
+function nextRegisterStep() {
+    if (currentRegisterStep < totalRegisterSteps) {
+        document.querySelector(`.form-step:nth-child(${currentRegisterStep})`).classList.remove('active');
+        currentRegisterStep++;
+        document.querySelector(`.form-step:nth-child(${currentRegisterStep})`).classList.add('active');
+        updateRegisterProgress();
+    }
+}
+
+function prevRegisterStep() {
+    if (currentRegisterStep > 1) {
+        document.querySelector(`.form-step:nth-child(${currentRegisterStep})`).classList.remove('active');
+        currentRegisterStep--;
+        document.querySelector(`.form-step:nth-child(${currentRegisterStep})`).classList.add('active');
+        updateRegisterProgress();
+    }
+}
+
+function updateRegisterProgress() {
+    const progress = (currentRegisterStep / totalRegisterSteps) * 100;
+    document.documentElement.style.setProperty('--register-progress', `${progress}%`);
+}
+
+function validateCurrentStep() {
+    const currentStepElement = document.querySelector(`.form-step:nth-child(${currentRegisterStep})`);
+    const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+    
+    for (let field of requiredFields) {
+        if (!field.value.trim()) {
+            field.focus();
+            showNotification('Veuillez remplir tous les champs requis', 'warning');
+            return false;
+        }
+    }
+    
+    // Step-specific validation
+    if (currentRegisterStep === 1) {
+        const password = currentStepElement.querySelector('input[name="password"]').value;
+        const confirmPassword = currentStepElement.querySelector('input[name="confirmPassword"]').value;
+        
+        if (password !== confirmPassword) {
+            showNotification('Les mots de passe ne correspondent pas', 'error');
+            return false;
+        }
+        
+        if (password.length < 6) {
+            showNotification('Le mot de passe doit contenir au moins 6 caractères', 'warning');
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+function handleRegister(event) {
+    event.preventDefault();
+    
+    if (!validateCurrentStep()) {
+        return;
+    }
+    
+    const formData = new FormData(event.target);
+    const registerData = {
+        name: formData.get('catName'),
+        email: formData.get('email'),
+        age: formData.get('age'),
+        gender: formData.get('gender'),
+        breed: formData.get('breed'),
+        personality: Array.from(formData.getAll('personality')),
+        description: formData.get('description'),
+        emoji: formData.get('emoji'),
+        humanPreferences: Array.from(formData.getAll('humanPreferences')),
+        registrationTime: new Date().toISOString()
+    };
+    
+    // Simulate registration process
+    const registerBtn = document.querySelector('.register-submit');
+    const originalText = registerBtn.innerHTML;
+    registerBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Création du profil...';
+    registerBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Store registration data
+        localStorage.setItem('pawmatch_registration', JSON.stringify(registerData));
+        localStorage.setItem('pawmatch_user', JSON.stringify({
+            name: registerData.name,
+            loginTime: new Date().toISOString(),
+            isNewUser: true
+        }));
+        
+        showNotification(`🎉 Félicitations ${registerData.name} ! Votre profil a été créé avec succès.`, 'success');
+        updateAuthUI({ name: registerData.name, isNewUser: true });
+        showPage('home');
+        
+        registerBtn.innerHTML = originalText;
+        registerBtn.disabled = false;
+        
+        // Reset form
+        currentRegisterStep = 1;
+        document.querySelectorAll('.form-step').forEach((step, index) => {
+            step.classList.toggle('active', index === 0);
+        });
+        updateRegisterProgress();
+    }, 2000);
+}
+
+function checkAuthStatus() {
+    const userData = localStorage.getItem('pawmatch_user') || sessionStorage.getItem('pawmatch_user');
+    if (userData) {
+        const user = JSON.parse(userData);
+        updateAuthUI(user);
+    }
+}
+
+function updateAuthUI(userData) {
+    // Update navigation to show user is logged in
+    const authLinks = document.querySelectorAll('.nav-menu a[href="#login"], .nav-menu a[href="#register"]');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    // Remove existing auth links
+    authLinks.forEach(link => link.remove());
+    
+    // Add user menu
+    const userMenu = document.createElement('div');
+    userMenu.className = 'user-menu';
+    userMenu.innerHTML = `
+        <span class="user-greeting">🐾 Salut ${userData.name} !</span>
+        <button class="btn btn-outline logout-btn" onclick="logout()">Déconnexion</button>
+    `;
+    
+    navMenu.appendChild(userMenu);
+    
+    // Add user menu styles if not already added
+    if (!document.querySelector('#user-menu-styles')) {
+        const style = document.createElement('style');
+        style.id = 'user-menu-styles';
+        style.textContent = `
+            .user-menu {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .user-greeting {
+                color: var(--primary-color);
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+            
+            .logout-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            @media (max-width: 768px) {
+                .user-menu {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    padding: 1rem 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+function logout() {
+    localStorage.removeItem('pawmatch_user');
+    sessionStorage.removeItem('pawmatch_user');
+    localStorage.removeItem('pawmatch_registration');
+    
+    // Restore auth links
+    const userMenu = document.querySelector('.user-menu');
+    if (userMenu) {
+        userMenu.remove();
+    }
+    
+    const navMenu = document.querySelector('.nav-menu');
+    const loginLink = document.createElement('a');
+    loginLink.href = '#login';
+    loginLink.textContent = 'Connexion';
+    loginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage('login');
+    });
+    
+    const registerLink = document.createElement('a');
+    registerLink.href = '#register';
+    registerLink.textContent = 'Inscription';
+    registerLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage('register');
+    });
+    
+    navMenu.appendChild(loginLink);
+    navMenu.appendChild(registerLink);
+    
+    showNotification('Vous avez été déconnecté(e) avec succès', 'success');
+    showPage('home');
+}
+
+// Add CSS for register progress
+const registerProgressStyle = document.createElement('style');
+registerProgressStyle.textContent = `
+    .register-card::after {
+        width: var(--register-progress, 25%);
+    }
+`;
+document.head.appendChild(registerProgressStyle);
