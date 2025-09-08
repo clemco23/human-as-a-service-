@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawMatch - Les chats cherchent leurs humains</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <i class="fas fa-cat"></i>
+                    <span>PawMatch</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#" data-page="home" class="nav-link active">Accueil</a></li>
+                    <li><a href="#" data-page="cats" class="nav-link">Chats disponibles</a></li>
+                    <li><a href="#" data-page="about" class="nav-link">À propos</a></li>
+                    <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <section id="home" class="page active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>Bienvenue sur PawMatch</h1>
+                        <p class="hero-subtitle">Où les chats choisissent leurs humains parfaits</p>
+                        <p class="hero-description">
+                            Découvrez notre approche révolutionnaire : ici, ce sont nos adorables félins 
+                            qui recherchent activement leur compagnon humain idéal. Chaque chat a ses 
+                            préférences et critères spécifiques !
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" data-page="cats">Voir les chats</button>
+                            <button class="btn btn-secondary" data-page="about">En savoir plus</button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="cat-illustration">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-cat"></i>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="container">
+                        <h2>Comment ça marche ?</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-paw"></i>
+                                <h3>Les chats postulent</h3>
+                                <p>Chaque chat crée son profil et définit le type d'humain qu'il recherche</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-search"></i>
+                                <h3>Recherche active</h3>
+                                <p>Nos félins parcourent les profils humains pour trouver leur match parfait</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-heart"></i>
+                                <h3>Match parfait</h3>
+                                <p>Quand un chat vous choisit, c'est le début d'une belle amitié !</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cats Page -->
+            <section id="cats" class="page">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Nos chats en recherche</h1>
+                        <p>Découvrez les adorables félins qui cherchent leur humain parfait</p>
+                    </div>
+
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="age-filter">Âge :</label>
+                            <select id="age-filter">
+                                <option value="">Tous les âges</option>
+                                <option value="chaton">Chaton (0-1 an)</option>
+                                <option value="jeune">Jeune (1-3 ans)</option>
+                                <option value="adulte">Adulte (3-8 ans)</option>
+                                <option value="senior">Senior (8+ ans)</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="personality-filter">Personnalité :</label>
+                            <select id="personality-filter">
+                                <option value="">Toutes personnalités</option>
+                                <option value="calme">Calme</option>
+                                <option value="joueur">Joueur</option>
+                                <option value="independant">Indépendant</option>
+                                <option value="affectueux">Affectueux</option>
+                            </select>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="Rechercher un chat...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+
+                    <div class="cats-grid" id="cats-grid">
+                        <!-- Les cartes de chats seront générées par JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Page -->
+            <section id="about" class="page">
+                <div class="container">
+                    <div class="about-content">
+                        <h1>À propos de PawMatch</h1>
+                        <div class="about-text">
+                            <p>
+                                PawMatch révolutionne l'adoption féline en inversant les rôles traditionnels. 
+                                Ici, ce sont nos chats qui prennent l'initiative et recherchent activement 
+                                leurs compagnons humains idéaux.
+                            </p>
+                            <p>
+                                Chaque chat de notre plateforme a développé ses propres critères de sélection, 
+                                basés sur son caractère unique, ses besoins spécifiques et ses préférences 
+                                de style de vie.
+                            </p>
+                            <h3>Notre mission</h3>
+                            <p>
+                                Créer des liens durables entre les chats et les humains en permettant 
+                                aux félins d'exprimer leurs préférences et de choisir leur famille d'adoption.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Page -->
+            <section id="contact" class="page">
+                <div class="container">
+                    <div class="contact-content">
+                        <h1>Contactez-nous</h1>
+                        <div class="contact-info">
+                            <div class="contact-card">
+                                <i class="fas fa-envelope"></i>
+                                <h3>Email</h3>
+                                <p>contact@pawmatch.fr</p>
+                            </div>
+                            <div class="contact-card">
+                                <i class="fas fa-phone"></i>
+                                <h3>Téléphone</h3>
+                                <p>01 23 45 67 89</p>
+                            </div>
+                            <div class="contact-card">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h3>Adresse</h3>
+                                <p>123 Rue des Chats<br>75001 Paris</p>
+                            </div>
+                        </div>
+                        
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nom</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>PawMatch</h3>
+                        <p>Où les chats choisissent leurs humains</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Liens rapides</h4>
+                        <ul>
+                            <li><a href="#" data-page="home">Accueil</a></li>
+                            <li><a href="#" data-page="cats">Chats disponibles</a></li>
+                            <li><a href="#" data-page="about">À propos</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Suivez-nous</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 PawMatch. Tous droits réservés.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
