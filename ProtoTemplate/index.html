@@ -23,6 +23,24 @@
                     <li><a href="#" data-page="about" class="nav-link">À propos</a></li>
                     <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
                 </ul>
+                <div class="cart-container">
+                    <div class="cart-icon" id="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                    <div class="cart-dropdown" id="cart-dropdown">
+                        <div class="cart-dropdown-header">
+                            <h3>Votre panier</h3>
+                        </div>
+                        <div class="cart-items" id="cart-items">
+                            <!-- Les articles du panier seront ajoutés ici -->
+                        </div>
+                        <div class="cart-dropdown-footer">
+                            <div class="cart-total" id="cart-total">Total: 0€</div>
+                            <button class="btn btn-primary" data-page="cart">Voir le panier</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -187,6 +205,174 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Envoyer</button>
                         </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cart Page -->
+            <section id="cart" class="page">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Votre panier d'adoption</h1>
+                        <p>Finalisez l'adoption de vos futurs compagnons félins</p>
+                    </div>
+
+                    <div class="cart-content">
+                        <div class="cart-main">
+                            <div class="cart-items-list" id="cart-items-list">
+                                <!-- Les articles du panier seront générés par JavaScript -->
+                            </div>
+                            
+                            <div class="cart-actions">
+                                <button class="btn btn-secondary" data-page="cats">Continuer les adoptions</button>
+                                <button class="btn btn-primary" id="proceed-checkout">Procéder au paiement</button>
+                            </div>
+                        </div>
+                        
+                        <div class="cart-summary">
+                            <div class="summary-card">
+                                <h3>Résumé de la commande</h3>
+                                <div class="summary-line">
+                                    <span>Frais d'adoption</span>
+                                    <span id="adoption-fees">0€</span>
+                                </div>
+                                <div class="summary-line">
+                                    <span>Frais vétérinaires</span>
+                                    <span id="vet-fees">0€</span>
+                                </div>
+                                <div class="summary-line">
+                                    <span>Kit de démarrage</span>
+                                    <span id="starter-kit">0€</span>
+                                </div>
+                                <div class="summary-line total">
+                                    <span>Total</span>
+                                    <span id="total-amount">0€</span>
+                                </div>
+                                <div class="summary-note">
+                                    <p><i class="fas fa-info-circle"></i> Les frais d'adoption incluent la stérilisation, les vaccins et l'identification.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Checkout Page -->
+            <section id="checkout" class="page">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Finaliser l'adoption</h1>
+                        <p>Dernière étape avant de rencontrer vos nouveaux compagnons</p>
+                    </div>
+
+                    <div class="checkout-content">
+                        <div class="checkout-main">
+                            <div class="checkout-section">
+                                <h3><i class="fas fa-user"></i> Informations personnelles</h3>
+                                <form class="checkout-form" id="checkout-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="first-name">Prénom</label>
+                                            <input type="text" id="first-name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last-name">Nom</label>
+                                            <input type="text" id="last-name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email-checkout">Email</label>
+                                        <input type="email" id="email-checkout" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Téléphone</label>
+                                        <input type="tel" id="phone" required>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="checkout-section">
+                                <h3><i class="fas fa-home"></i> Adresse</h3>
+                                <div class="form-group">
+                                    <label for="address">Adresse</label>
+                                    <input type="text" id="address" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="city">Ville</label>
+                                        <input type="text" id="city" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="postal-code">Code postal</label>
+                                        <input type="text" id="postal-code" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkout-section">
+                                <h3><i class="fas fa-credit-card"></i> Paiement</h3>
+                                <div class="payment-methods">
+                                    <div class="payment-method active">
+                                        <input type="radio" id="card" name="payment" value="card" checked>
+                                        <label for="card">
+                                            <i class="fas fa-credit-card"></i>
+                                            Carte bancaire
+                                        </label>
+                                    </div>
+                                    <div class="payment-method">
+                                        <input type="radio" id="paypal" name="payment" value="paypal">
+                                        <label for="paypal">
+                                            <i class="fab fa-paypal"></i>
+                                            PayPal
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-details" id="card-details">
+                                    <div class="form-group">
+                                        <label for="card-number">Numéro de carte</label>
+                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="expiry">Date d'expiration</label>
+                                            <input type="text" id="expiry" placeholder="MM/AA" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cvv">CVV</label>
+                                            <input type="text" id="cvv" placeholder="123" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkout-section">
+                                <div class="terms-checkbox">
+                                    <input type="checkbox" id="terms" required>
+                                    <label for="terms">J'accepte les <a href="#">conditions d'adoption</a> et je m'engage à prendre soin de mes nouveaux compagnons</label>
+                                </div>
+                            </div>
+
+                            <div class="checkout-actions">
+                                <button class="btn btn-secondary" data-page="cart">Retour au panier</button>
+                                <button class="btn btn-primary" id="complete-adoption">Finaliser l'adoption</button>
+                            </div>
+                        </div>
+                        
+                        <div class="checkout-summary">
+                            <div class="summary-card">
+                                <h3>Vos futurs compagnons</h3>
+                                <div class="checkout-cats" id="checkout-cats">
+                                    <!-- Les chats du panier seront affichés ici -->
+                                </div>
+                                <div class="summary-total">
+                                    <div class="summary-line total">
+                                        <span>Total à payer</span>
+                                        <span id="checkout-total">0€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
