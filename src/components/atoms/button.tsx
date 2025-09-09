@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { NavLink } from 'react-router-dom';
 
 type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
@@ -19,33 +20,37 @@ const colorClasses = {
   transparent: 'bg-transparent border-2 border-[#ff6b6b] text-[#ff6b6b] hover:bg-[#ff5252] hover:text-white text-md',
   secondary: 'bg-gray-500 text-white hover:bg-gray-600',
   danger: 'bg-red-700 text-white hover:bg-red-600 text-md',
-  default: 'bg-transparent border-2 border-white  text-white hover:bg-white hover:text-black text-md',
+  default: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-black text-md',
   black: 'bg-white text-black hover:scale-90 hover:shadow-md hover:bg-[#ff6b6b] hover:text-white text-md',
 };
 
+// Classe appliquée si actif
+const activeClass = "bg-[#ff6b6b] text-white shadow-md";
+
 export default function Button({
   size = 'medium',
-  color = 'primary',
+  color = 'black',
   href,
   children,
   onClick,
 }: ButtonProps) {
-  const classes = `rounded-md font-medium transition ${sizeClasses[size]} ${colorClasses[color]}`;
+  const baseClasses = `rounded-md font-medium transition ${sizeClasses[size]}`;
 
   if (href) {
     return (
-      <a
-        href={href}
-        className={classes}
-        target={color === 'primary' ? "_blank" : undefined}
+      <NavLink
+        to={href}
+        className={({ isActive }) =>
+          isActive ? `${baseClasses} ${activeClass}` : `${baseClasses} ${colorClasses[color]}`
+        }
       >
         {children}
-      </a>
+      </NavLink>
     );
   }
 
   return (
-    <button onClick={onClick} className={classes} type="button">
+    <button onClick={onClick} className={`${baseClasses} ${colorClasses[color]}`} type="button">
       {children}
     </button>
   );
