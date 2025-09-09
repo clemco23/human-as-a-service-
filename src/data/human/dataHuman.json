@@ -1,107 +1,130 @@
 [
-  {
-    "title": "Jane Smith",
-    "age": 25,
-    "personality": "Creative",
-    "description": "A creative individual with a passion for UI/UX design, prototyping, and building visually engaging experiences.",
-    "search": "UX designer, Figma, Adobe XD, creative thinker, puis blabla merde j'ia pas d'inspii il est tard là"
-  },
-  {
-    "title": "Mike Johnson",
-    "age": 40,
-    "personality": "Analytical",
-    "description": "An analytical thinker experienced in project management, process optimization, and data-driven decision making.",
-    "search": "Project manager, Agile, data analysis, leadership, puis blabla merde j'ia pas d'inspii il est tard là"
-  },
-  {
-    "title": "John Doe",
-    "age": 30,
-    "personality": "Friendly",
-    "description": "A friendly person who enjoys teamwork, mentoring juniors, and creating positive work environments.",
-    "search": "Full-stack developer, React, Node.js, team player"
-  },
-  {
-    "title": "Emily Davis",
-    "age": 28,
-    "personality": "Organized",
-    "description": "An organized professional skilled in scheduling, resource allocation, and efficient workflow management.",
-    "search": "Project coordinator, Trello, Asana, meticulous"
-  },
-  {
-    "title": "Robert Brown",
-    "age": 35,
-    "personality": "Innovative",
-    "description": "An innovative thinker constantly seeking new solutions and creative approaches to challenges.",
-    "search": "Product designer, prototyping, creative solutions"
-  },
-  {
-    "title": "Sophia Wilson",
-    "age": 32,
-    "personality": "Empathetic",
-    "description": "An empathetic team member who understands client needs and communicates effectively.",
-    "search": "Customer support, communication, empathy"
-  },
-  {
-    "title": "William Martinez",
-    "age": 45,
-    "personality": "Strategic",
-    "description": "A strategic leader focused on long-term goals and business growth.",
-    "search": "Business strategy, leadership, planning"
-  },
-  {
-    "title": "Olivia Taylor",
-    "age": 27,
-    "personality": "Detail-Oriented",
-    "description": "Pays attention to the smallest details to ensure quality and precision in every task.",
-    "search": "QA tester, meticulous, quality assurance"
-  },
-  {
-    "title": "James Anderson",
-    "age": 38,
-    "personality": "Problem-Solver",
-    "description": "Quickly identifies issues and implements effective solutions under pressure.",
-    "search": "IT support, troubleshooting, problem solving"
-  },
-  {
-    "title": "Isabella Thomas",
-    "age": 26,
-    "personality": "Adaptable",
-    "description": "Thrives in changing environments and adjusts strategies to meet evolving challenges.",
-    "search": "Marketing, social media, adaptable, flexible"
-  },
-  {
-    "title": "Alexander Jackson",
-    "age": 41,
-    "personality": "Leader",
-    "description": "A natural leader who inspires and motivates teams to reach ambitious goals.",
-    "search": "Team lead, management, motivation, leadership"
-  },
-  {
-    "title": "Mia White",
-    "age": 29,
-    "personality": "Curious",
-    "description": "Always eager to learn new skills, explore new ideas, and expand knowledge.",
-    "search": "Research, innovation, curiosity"
-  },
-  {
-    "title": "David Harris",
-    "age": 36,
-    "personality": "Analytical",
-    "description": "Uses data-driven insights to inform decisions and optimize processes.",
-    "search": "Data analyst, Excel, SQL, critical thinking"
-  },
-  {
-    "title": "Charlotte Lewis",
-    "age": 31,
-    "personality": "Creative",
-    "description": "Generates original ideas and creative solutions in design and storytelling.",
-    "search": "Graphic designer, Illustrator, storytelling, creativity"
-  },
-  {
-    "title": "Henry Clark",
-    "age": 39,
-    "personality": "Reliable",
-    "description": "Dependable team member who consistently delivers high-quality results on time.",
-    "search": "Operations, reliability, project management, punctual"
-  }
+    {
+        "title": "Léo Martin",
+        "age": 12,
+        "personality": "Calme",
+        "description": "Un humain calme et doux, parfait pour les câlins avec un chat timide.",
+        "search": "Calin, paisible, tranquille, aime la lecture",
+        "id": 1
+    },
+    {
+        "title": "Emma Dupont",
+        "age": 18,
+        "personality": "Aventureux",
+        "description": "Toujours prête pour de nouvelles aventures, adore explorer avec son compagnon félin.",
+        "search": "Curieuse, joueuse, aime explorer",
+        "id": 2
+    },
+    {
+        "title": "Lucas Bernard",
+        "age": 22,
+        "personality": "Familial",
+        "description": "Un humain qui adore passer du temps en famille et choyer son futur chat.",
+        "search": "Affectueux, attentionné, doux, sociable",
+        "id": 3
+    },
+    {
+        "title": "Chloé Lambert",
+        "age": 25,
+        "personality": "Sportif",
+        "description": "Active et dynamique, prête à jouer et courir avec son chat.",
+        "search": "Énergique, active, sportive",
+        "id": 4
+    },
+    {
+        "title": "Maxime Leroy",
+        "age": 30,
+        "personality": "Travailleur",
+        "description": "Organisé et responsable, parfait pour un chat qui a besoin de stabilité.",
+        "search": "Responsable, fiable, attentif",
+        "id": 5
+    },
+    {
+        "title": "Sophie Moreau",
+        "age": 28,
+        "personality": "Calme",
+        "description": "Tranquille et posée, idéale pour un chat craintif ou anxieux.",
+        "search": "Patient, doux, attentionné",
+        "id": 6
+    },
+    {
+        "title": "Antoine Roux",
+        "age": 35,
+        "personality": "Aventureux",
+        "description": "Curieux et joueur, toujours prêt à découvrir de nouveaux jeux avec son chat.",
+        "search": "Explorateur, joueur, dynamique",
+        "id": 7
+    },
+    {
+        "title": "Laura Petit",
+        "age": 32,
+        "personality": "Familial",
+        "description": "Adore s’occuper de ses proches et offrira beaucoup d’amour à son chat.",
+        "search": "Chaleureuse, affectueuse, sociale",
+        "id": 8
+    },
+    {
+        "title": "Julien Fabre",
+        "age": 40,
+        "personality": "Sportif",
+        "description": "Toujours en mouvement, idéal pour un chat actif et joueur.",
+        "search": "Énergique, sportif, dynamique",
+        "id": 9
+    },
+    {
+        "title": "Camille Richard",
+        "age": 45,
+        "personality": "Travailleur",
+        "description": "Fiable et organisé, offrira un foyer stable à son futur chat.",
+        "search": "Fiable, responsable, organisé",
+        "id": 10
+    },
+    {
+        "title": "Nina Simon",
+        "age": 15,
+        "personality": "Calme",
+        "description": "Douce et patiente, parfaite pour un chat timide ou âgé.",
+        "search": "Gentille, douce, patiente",
+        "id": 11
+    },
+    {
+        "title": "Thomas Michel",
+        "age": 20,
+        "personality": "Aventureux",
+        "description": "Joueur et curieux, il adore les défis et les nouvelles expériences avec les chats.",
+        "search": "Curieux, joueur, dynamique",
+        "id": 12
+    },
+    {
+        "title": "Alice Girard",
+        "age": 27,
+        "personality": "Familial",
+        "description": "Chaleureuse et affectueuse, elle aime créer des liens forts avec son chat.",
+        "search": "Affectueuse, sociale, câline",
+        "id": 13
+    },
+    {
+        "title": "Bastien Dubois",
+        "age": 38,
+        "personality": "Sportif",
+        "description": "Toujours actif, prêt à courir et jouer avec son futur compagnon félin.",
+        "search": "Énergique, sportif, joueur",
+        "id": 14
+    },
+    {
+        "title": "Clara Noël",
+        "age": 33,
+        "personality": "Travailleur",
+        "description": "Responsable et fiable, elle offrira un foyer sûr et structuré à son chat.",
+        "search": "Fiable, organisé, attentif",
+        "id": 15
+    },
+    {
+        "title": "Lucas Fontaine",
+        "age": 15,
+        "personality": "Calme",
+        "description": "Un jeune humain doux et tranquille, parfait pour un chat qui aime la sérénité.",
+        "search": "Bordeliqueux, désordonné, inattentif",
+        "id": 16
+    }
 ]
