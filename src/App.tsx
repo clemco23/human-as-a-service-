@@ -5,6 +5,7 @@ import HomePage from './pages/home'
 import ContactPage from './pages/contact'
 import SearchPage from './pages/searchPage'
 import Header from './components/molecules/header';
+import Footer from './components/molecules/footer';
 import AboutPage from './pages/about';
 import ConnectPage from './pages/connect';
 function AppRouter() {
@@ -18,6 +19,7 @@ function AppRouter() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/connect" element={<ConnectPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

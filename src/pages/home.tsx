@@ -1,7 +1,3 @@
-// import Button from "../components/atoms/button"
-
-
-
 import Button from "../components/atoms/button"
 import { useState } from "react";
 import { FaSearch, FaCat, FaHeart, FaPaw } from "react-icons/fa";
@@ -11,8 +7,6 @@ export default function Home() {
     return (
         <main className=" bg-grey main-content min-h-[calc(100vh-80px)]">
             
-
-
       {/* Home Page */}
       {activePage === "home" && (
         <section id="home" className="page active animate-fadeIn">
