@@ -15,7 +15,7 @@ export default function Header() {
           </div>
           
           <div className="flex items-center space-x-4 mx-auto">
-            <Button color="black" size="medium" href="">
+            <Button color="black" size="medium" href="/">
               Acceuil
             </Button>
             <Button color="black" size="medium" href="/search">
