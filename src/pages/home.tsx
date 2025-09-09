@@ -1,10 +1,15 @@
 import Button from "../components/atoms/button"
+<<<<<<< Updated upstream
 import { useState } from "react";
 import { FaSearch, FaCat, FaHeart, FaPaw } from "react-icons/fa";
+=======
+import Header from "../components/molecules/header"
+>>>>>>> Stashed changes
 
 export default function Home() {
      const [activePage, setActivePage] = useState("home");
     return (
+<<<<<<< Updated upstream
         <main className=" bg-grey main-content mt-20 min-h-[calc(100vh-80px)]">
       {/* Home Page */}
       {activePage === "home" && (
@@ -80,5 +85,14 @@ export default function Home() {
         </section>
       )}
     </main>
+=======
+        <div>
+            <Header />
+            <main className="p-8">
+                <h1 className="text-3xl text-blue-500 mb-4">Home</h1>
+                <Button size="large" color="primary" href="https://google.com">Google</Button>
+            </main>
+        </div>
+>>>>>>> Stashed changes
     )
 }
