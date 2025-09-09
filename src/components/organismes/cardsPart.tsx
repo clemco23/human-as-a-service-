@@ -13,10 +13,13 @@ export default function CardsPart({ data }: Props) {
           key={index}
           id={person.id}
           title={person.title}
+          image={person.image}
           age={person.age}
           personality={person.personality}
           description={person.description}
           search={person.search}
+          genre={person.genre}
+          size={person.size}
         />
       ))}
     </div>
