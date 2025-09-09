@@ -5,6 +5,7 @@ import HomePage from './pages/home'
 import ContactPage from './pages/contact'
 import SearchPage from './pages/searchPage'
 import Header from './components/molecules/header';
+import AboutPage from './pages/about';
 
 function AppRouter() {
   return (
@@ -14,6 +15,8 @@ function AppRouter() {
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/about" element={<AboutPage />} />
+
       </Routes>
     </Router>
   );
