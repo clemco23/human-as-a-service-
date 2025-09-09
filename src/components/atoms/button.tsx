@@ -24,7 +24,6 @@ const colorClasses = {
   black: 'bg-white text-black hover:scale-90 hover:shadow-md hover:bg-[#ff6b6b] hover:text-white text-md',
 };
 
-// Classe appliquée si actif
 const activeClass = "bg-[#ff6b6b] text-white shadow-md";
 
 export default function Button({
@@ -38,15 +37,11 @@ export default function Button({
 
   if (href) {
     return (
-
       <NavLink
         to={href}
         className={({ isActive }) =>
           isActive ? `${baseClasses} ${activeClass}` : `${baseClasses} ${colorClasses[color]}`
         }
-
-     
-        
       >
         {children}
       </NavLink>
