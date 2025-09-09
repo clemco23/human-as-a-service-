@@ -5,7 +5,9 @@ export default function Header() {
     <header className="bg-white text-black" >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <h1 className="text-xl font-bold">Human as a Service</h1>
+           <Button color="black" size="medium" href="/">
+              Human As A Service
+            </Button>
         </div>
         
         <nav aria-label="Global" className="flex items-center flex-1 p-6 lg:px-8">
