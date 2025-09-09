@@ -18,7 +18,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 flex-1 justify-center">
             <Button color="black" size="medium" href="/">
-              Acceuil
+              Accueil
             </Button>
             <Button color="black" size="medium" href="/search">
               Chat disponible
