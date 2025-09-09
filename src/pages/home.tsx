@@ -1,5 +1,5 @@
 // import Button from "../components/atoms/button"
-import Header from "../components/molecules/header"
+
 
 
 import Button from "../components/atoms/button"
@@ -10,7 +10,7 @@ export default function Home() {
      const [activePage, setActivePage] = useState("home");
     return (
         <main className=" bg-grey main-content min-h-[calc(100vh-80px)]">
-            <Header />
+            
 
 
       {/* Home Page */}
