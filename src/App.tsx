@@ -6,7 +6,7 @@ import ContactPage from './pages/contact'
 import SearchPage from './pages/searchPage'
 import Header from './components/molecules/header';
 import AboutPage from './pages/about';
-
+import ConnectPage from './pages/connect';
 function AppRouter() {
   return (
     <Router>
@@ -16,7 +16,7 @@ function AppRouter() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/about" element={<AboutPage />} />
-
+        <Route path="/connect" element={<ConnectPage />} />
       </Routes>
     </Router>
   );

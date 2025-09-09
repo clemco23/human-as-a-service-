@@ -33,7 +33,7 @@ export default function Header() {
 
           {/* Cat Connect - Desktop */}
           <div className="hidden md:block">
-            <Button size="medium">
+            <Button size="medium" href='/connect'>
               Cat Connect
             </Button>
           </div>
