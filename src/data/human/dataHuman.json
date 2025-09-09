@@ -1,0 +1,107 @@
+[
+  {
+    "title": "Jane Smith",
+    "age": 25,
+    "personality": "Creative",
+    "description": "A creative individual with a passion for UI/UX design, prototyping, and building visually engaging experiences.",
+    "search": "UX designer, Figma, Adobe XD, creative thinker, puis blabla merde j'ia pas d'inspii il est tard là"
+  },
+  {
+    "title": "Mike Johnson",
+    "age": 40,
+    "personality": "Analytical",
+    "description": "An analytical thinker experienced in project management, process optimization, and data-driven decision making.",
+    "search": "Project manager, Agile, data analysis, leadership, puis blabla merde j'ia pas d'inspii il est tard là"
+  },
+  {
+    "title": "John Doe",
+    "age": 30,
+    "personality": "Friendly",
+    "description": "A friendly person who enjoys teamwork, mentoring juniors, and creating positive work environments.",
+    "search": "Full-stack developer, React, Node.js, team player"
+  },
+  {
+    "title": "Emily Davis",
+    "age": 28,
+    "personality": "Organized",
+    "description": "An organized professional skilled in scheduling, resource allocation, and efficient workflow management.",
+    "search": "Project coordinator, Trello, Asana, meticulous"
+  },
+  {
+    "title": "Robert Brown",
+    "age": 35,
+    "personality": "Innovative",
+    "description": "An innovative thinker constantly seeking new solutions and creative approaches to challenges.",
+    "search": "Product designer, prototyping, creative solutions"
+  },
+  {
+    "title": "Sophia Wilson",
+    "age": 32,
+    "personality": "Empathetic",
+    "description": "An empathetic team member who understands client needs and communicates effectively.",
+    "search": "Customer support, communication, empathy"
+  },
+  {
+    "title": "William Martinez",
+    "age": 45,
+    "personality": "Strategic",
+    "description": "A strategic leader focused on long-term goals and business growth.",
+    "search": "Business strategy, leadership, planning"
+  },
+  {
+    "title": "Olivia Taylor",
+    "age": 27,
+    "personality": "Detail-Oriented",
+    "description": "Pays attention to the smallest details to ensure quality and precision in every task.",
+    "search": "QA tester, meticulous, quality assurance"
+  },
+  {
+    "title": "James Anderson",
+    "age": 38,
+    "personality": "Problem-Solver",
+    "description": "Quickly identifies issues and implements effective solutions under pressure.",
+    "search": "IT support, troubleshooting, problem solving"
+  },
+  {
+    "title": "Isabella Thomas",
+    "age": 26,
+    "personality": "Adaptable",
+    "description": "Thrives in changing environments and adjusts strategies to meet evolving challenges.",
+    "search": "Marketing, social media, adaptable, flexible"
+  },
+  {
+    "title": "Alexander Jackson",
+    "age": 41,
+    "personality": "Leader",
+    "description": "A natural leader who inspires and motivates teams to reach ambitious goals.",
+    "search": "Team lead, management, motivation, leadership"
+  },
+  {
+    "title": "Mia White",
+    "age": 29,
+    "personality": "Curious",
+    "description": "Always eager to learn new skills, explore new ideas, and expand knowledge.",
+    "search": "Research, innovation, curiosity"
+  },
+  {
+    "title": "David Harris",
+    "age": 36,
+    "personality": "Analytical",
+    "description": "Uses data-driven insights to inform decisions and optimize processes.",
+    "search": "Data analyst, Excel, SQL, critical thinking"
+  },
+  {
+    "title": "Charlotte Lewis",
+    "age": 31,
+    "personality": "Creative",
+    "description": "Generates original ideas and creative solutions in design and storytelling.",
+    "search": "Graphic designer, Illustrator, storytelling, creativity"
+  },
+  {
+    "title": "Henry Clark",
+    "age": 39,
+    "personality": "Reliable",
+    "description": "Dependable team member who consistently delivers high-quality results on time.",
+    "search": "Operations, reliability, project management, punctual"
+  }
+]
