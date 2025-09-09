@@ -5,19 +5,21 @@ type Props = {
   personality: string;
   description: string;
   search: string;
+  id: number;
 }
 
-export default function HumanCard({ image, title, age, personality, description, search }: Props) {
+export default function HumanCard({ id, image, title, age, personality, description, search }: Props) {
+  console.log(id);
   return (
     <div className="max-w-sm mx-auto bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
      
       
+      <p className="text-gray-500  mb-3">{id}</p>
         <img
           src={image}
           alt={title}
           className="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-gray-200 shadow-sm"
         />
-      
       <h2 className="text-2xl font-bold text-gray-900 text-center">{title}</h2>
       <p className="text-gray-500 text-center mb-3">{age} ans</p>
 
