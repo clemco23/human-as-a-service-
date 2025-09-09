@@ -1,4 +1,3 @@
-
 export default function Contact() {
     return (
         <section id="contact" className="page py-12 bg-gray-50">
