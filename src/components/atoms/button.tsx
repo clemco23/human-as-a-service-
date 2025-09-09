@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
-  color?: 'primary' | 'secondary' | 'transparent' | 'danger'| 'default';
+  color?: 'primary' | 'secondary' | 'transparent' | 'danger'| 'default' | 'black';
   href?: string;
   children: ReactNode;
   onClick?: () => void;
@@ -20,7 +20,7 @@ const colorClasses = {
   secondary: 'bg-gray-500 text-white hover:bg-gray-600',
   danger: 'bg-red-700 text-white hover:bg-red-600 text-md',
   default: 'bg-transparent border-2 border-white  text-white hover:bg-white hover:text-black text-md',
-
+  black: 'bg-white text-black hover:scale-90 hover:shadow-md hover:bg-[#ff6b6b] hover:text-white text-md',
 };
 
 export default function Button({
