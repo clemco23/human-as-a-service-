@@ -1,11 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './pages/home'
-import APP from './pages/contact'
+import HomePage from './pages/home'
+import ContactPage from './pages/contact'
+import SearchPage from './pages/searchPage'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
-    <APP />
+    <HomePage />
+    <ContactPage />
+    <SearchPage />
   </StrictMode>,
 )
