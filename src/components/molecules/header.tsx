@@ -15,16 +15,16 @@ export default function Header() {
           </div>
           
           <div className="flex items-center space-x-4 mx-auto">
-            <Button color="black" size="medium">
+            <Button color="black" size="medium" href="">
               Acceuil
             </Button>
-            <Button color="black" size="medium">
+            <Button color="black" size="medium" href="/search">
               Chat disponible
             </Button>
-            <Button color="black" size="medium">
+            <Button color="black" size="medium" href="/about">
               À propos
             </Button>
-            <Button color="black" size="medium">
+            <Button color="black" size="medium" href="/contact">
               Contact
             </Button>
           </div>
