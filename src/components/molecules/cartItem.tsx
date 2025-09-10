@@ -1,5 +1,3 @@
-
-
 type CartHumanItemProps = {
   id: number;
   title: string;

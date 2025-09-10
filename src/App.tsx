@@ -9,6 +9,7 @@ import Footer from './components/molecules/footer';
 import AboutPage from './pages/about';
 import ConnectPage from './pages/connect';
 import RegisterPage from './pages/register';
+import AddHuman from './pages/addHuman';
 import Cart from './pages/cart';
 function AppRouter() {
   return (
@@ -23,6 +24,7 @@ function AppRouter() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/connect" element={<ConnectPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/add-human" element={<AddHuman />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>

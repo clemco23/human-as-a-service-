@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import CardsPart from '../components/organismes/cardsPart';
-// import Data from '../data/human/dataHuman.json';
+import Button from '../components/atoms/button';
 import { db } from '../firebase-config';
 import { collection, getDocs } from "firebase/firestore";
+
 export default function SearchPage() {
   const [ageRange, setAgeRange] = useState<string>("");
   const [personality, setPersonality] = useState<string>("");
@@ -106,6 +107,16 @@ export default function SearchPage() {
               <option value="M">Homme</option>
               <option value="F">Femme</option>
             </select>
+          </div>
+
+          <div className="mt-6">
+            <Button 
+              size="medium" 
+              color="primary" 
+              href="/add-human"
+            >
+              + Ajouter un humain
+            </Button>
           </div>
         </div>
 
