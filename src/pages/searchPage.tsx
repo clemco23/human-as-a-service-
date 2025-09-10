@@ -109,7 +109,7 @@ export default function SearchPage() {
             </select>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-8">
             <Button 
               size="medium" 
               color="primary" 
