@@ -14,7 +14,7 @@ type Props = {
 }
 
 export default function HumanCard({ id, image, title, age, personality, description, search, genre, size, prix }: Props) {
-  console.log(id);
+  
   const [isMonthly, setIsMonthly] = useState(true);
 
   const handleAddToCart = () => {
