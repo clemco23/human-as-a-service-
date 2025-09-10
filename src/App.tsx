@@ -12,16 +12,20 @@ import RegisterPage from './pages/register';
 function AppRouter() {
   return (
     <Router>
+      <div className="min-h-screen flex flex-col">  
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/connect" element={<ConnectPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-      </Routes>
+      <main className="flex-1">    
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/connect" element={<ConnectPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </main>
       <Footer />
+      </div>
     </Router>
   );
 }
