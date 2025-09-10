@@ -8,6 +8,7 @@ import Header from './components/molecules/header';
 import Footer from './components/molecules/footer';
 import AboutPage from './pages/about';
 import ConnectPage from './pages/connect';
+import RegisterPage from './pages/register';
 function AppRouter() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function AppRouter() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/connect" element={<ConnectPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
       <Footer />
     </Router>
