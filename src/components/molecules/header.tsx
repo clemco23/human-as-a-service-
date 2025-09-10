@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 import { onAuthStateChanged, signOut, type User } from "firebase/auth";
 import { auth } from "../../firebase-config"; 
 import Button from "../atoms/button";
 
 export default function Header() {
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
@@ -48,6 +51,14 @@ export default function Header() {
                 <span className="text-sm text-gray-700">
                   Bienvenue, {user.displayName || user.email}
                 </span>
+                {/* Icône panier cliquable */}
+                <a
+                  href="/cart"
+                  aria-label="Panier"
+                  className={`flex items-center justify-center rounded-lg p-2 transition ${location.pathname === "/cart" ? "bg-red-400" : "bg-gray-200 hover:bg-red-400"}`}
+                >
+                  <FaShoppingCart className={`text-2xl ${location.pathname === "/cart" ? "text-white" : "text-red-500"}`} />
+                </a>
                 <button
                   onClick={() => signOut(auth)}
                   className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition"
@@ -127,12 +138,21 @@ export default function Header() {
                     <span className="text-sm text-gray-700">
                       Bienvenue, {user.displayName || user.email}
                     </span>
-                    <button
-                      onClick={() => signOut(auth)}
-                      className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition"
-                    >
-                      Déconnexion
-                    </button>
+                    <div className="flex items-center space-x-2">
+                      <a
+                        href="/cart"
+                        aria-label="Panier"
+                        className={`flex items-center justify-center rounded-lg p-2 transition ${location.pathname === "/cart" ? "bg-red-400" : "bg-gray-200 hover:bg-red-400"}`}
+                      >
+                        <FaShoppingCart className={`text-2xl ${location.pathname === "/cart" ? "text-white" : "text-red-500"}`} />
+                      </a>
+                      <button
+                        onClick={() => signOut(auth)}
+                        className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                      >
+                        Déconnexion
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <Button size="medium" href="/connect">
