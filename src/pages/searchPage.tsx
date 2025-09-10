@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CardsPart from '../components/organismes/cardsPart';
-import Data from '../data/human/dataHuman.json';
-
+// import Data from '../data/human/dataHuman.json';
+import { db } from '../firebase-config';
+import { collection, getDocs } from "firebase/firestore";
 export default function SearchPage() {
   const [ageRange, setAgeRange] = useState<string>("");
   const [personality, setPersonality] = useState<string>("");
   const [genre, setGenre] = useState<string>("");
+
+  const [Data, setData] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchHumans = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, "products"));
+        const humans = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setData(humans);
+      } catch (error) {
+        console.error("Erreur récupération Firestore :", error);
+      }
+    };
+
+    fetchHumans();
+  }, []);
 
   const getAgeFilter = () => {
     switch (ageRange) {
