@@ -1,5 +1,6 @@
+import { useCart } from "../../contexts/CartContext";
 type CartHumanItemProps = {
-  id: number;
+  id: string;
   title: string;
   image?: string;
   age: number;
@@ -22,7 +23,7 @@ export default function CartItem({
   price,
   isMonthly,
 }: CartHumanItemProps) {
-
+  const { removeFromCart } = useCart();
   return (
     <div className="flex items-center gap-4 border-b border-gray-200 py-4">
       <img
@@ -38,13 +39,18 @@ export default function CartItem({
         <p className="text-sm text-red-700 font-medium">{personality}</p>
       </div>
       <div className="flex flex-col items-end gap-2">
-        
         <span className="text-lg font-bold text-gray-800">
           {price } €
         </span>
         <span className="text-sm text-gray-500">
           {isMonthly ? "par mois" : "en une fois"}
         </span>
+        <button
+          onClick={() => removeFromCart(id)}
+          className="mt-2 px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs rounded-lg"
+        >
+          Supprimer
+        </button>
       </div>
     </div>
   );

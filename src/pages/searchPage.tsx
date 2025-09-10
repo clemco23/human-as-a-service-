@@ -3,13 +3,15 @@ import CardsPart from '../components/organismes/cardsPart';
 import Button from '../components/atoms/button';
 import { db } from '../firebase-config';
 import { collection, getDocs } from "firebase/firestore";
+// import { useCart } from "../contexts/CartContext"; // supprimé car inutilisé
 
 export default function SearchPage() {
   const [ageRange, setAgeRange] = useState<string>("");
   const [personality, setPersonality] = useState<string>("");
   const [genre, setGenre] = useState<string>("");
 
-  const [Data, setData] = useState<any[]>([]);
+  const [Data, setData] = useState<unknown[]>([]);
+  // const { addToCart } = useCart(); // supprimé car inutilisé
 
   useEffect(() => {
     const fetchHumans = async () => {
@@ -101,10 +103,10 @@ export default function SearchPage() {
             <Button size="medium" color="primary" href="/add-human">+ Ajouter un humain</Button>
           </div>
         </div>
-
       </div>
 
-      <CardsPart data={filteredData} />
+      {/* On passe addToCart à CardsPart */}
+  <CardsPart data={filteredData} />
     </div>
   );
 }
