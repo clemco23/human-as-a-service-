@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaHandPaper, FaPaw } from "react-icons/fa";
 import { onAuthStateChanged, signOut, type User } from "firebase/auth";
 import { auth, db } from "../../firebase-config"; 
 import { doc, getDoc } from "firebase/firestore";
 import Button from "../atoms/button";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+  const switchLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
+
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -51,46 +59,74 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 flex-1 justify-center">
             <Button color="black" size="medium" href="/">
-              Accueil
+              {t("header.navHome")}
             </Button>
             <Button color="black" size="medium" href="/search">
-               humain disponible
+              {t("header.navCats")}
             </Button>
             <Button color="black" size="medium" href="/about">
-              À propos
+             {t("header.navAbout")}
             </Button>
             <Button color="black" size="medium" href="/contact">
-              Contact
+              {t("header.navContact")}
             </Button>
           </nav>
 
           {/* Right side (User info or login) */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-4">
             {user ? (
-              <div className="flex items-center space-x-4">
+              <>
                 <span className="text-sm text-gray-700">
-                  Bienvenue, {displayName || user.email}
+                  {t("header.navWelcome")} {displayName || user.email}
                 </span>
-                {/* Icône panier cliquable */}
+                {/* Icône panier */}
                 <a
                   href="/cart"
                   aria-label="Panier"
-                  className={`flex items-center justify-center rounded-lg p-2 transition ${location.pathname === "/cart" ? "bg-red-400" : " hover:bg-red-400"}`}
+                  className={`flex items-center justify-center rounded-lg p-2 transition ${
+                    location.pathname === "/cart"
+                      ? "bg-red-400"
+                      : "hover:bg-red-400"
+                  }`}
                 >
-                  <FaShoppingCart className={`text-2xl ${location.pathname === "/cart" ? "text-white" : "text-red-500"}`} />
+                  <FaShoppingCart
+                    className={`text-2xl ${
+                      location.pathname === "/cart"
+                        ? "text-white"
+                        : "text-red-500"
+                    }`}
+                  />
                 </a>
                 <button
                   onClick={() => signOut(auth)}
                   className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition"
                 >
-                  Déconnexion
+                 {t("header.navLogout")}
                 </button>
-              </div>
+              </>
             ) : (
               <Button size="medium" href="/connect">
-                Cat Connect
+                {t("header.navConnect")}
               </Button>
             )}
+
+            {/* Boutons langues avec icônes */}
+            <div className="flex space-x-2">
+              <button
+                onClick={() => switchLanguage("fr")}
+                className="p-2 border rounded flex items-center justify-center"
+                title="Français"
+              >
+                <FaHandPaper className="text-xl" />
+              </button>
+              <button
+                onClick={() => switchLanguage("en")}
+                className="p-2 border rounded flex items-center justify-center"
+                title="Miaou"
+              >
+                <FaPaw className="text-xl" />
+              </button>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -135,57 +171,6 @@ export default function Header() {
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 rounded-lg mt-2">
-              <Button color="black" size="medium" href="/">
-                Accueil
-              </Button>
-              <Button color="black" size="medium" href="/search">
-                Chat disponible
-              </Button>
-              <Button color="black" size="medium" href="/about">
-                À propos
-              </Button>
-              <Button color="black" size="medium" href="/contact">
-                Contact
-              </Button>
-              <Button color="black" size="medium" href="/cart">
-                Pannier
-              </Button>
-              <div className="pt-2 border-t border-gray-200">
-                {user ? (
-                  <div className="flex flex-col space-y-2">
-                    <span className="text-sm text-gray-700">
-                      Bienvenue, {displayName || user.email}
-                    </span>
-                    <div className="flex items-center space-x-2">
-                      <a
-                        href="/cart"
-                        aria-label="Panier"
-                        className={`flex items-center justify-center rounded-lg p-2 transition ${location.pathname === "/cart" ? "bg-red-400" : "bg-gray-200 hover:bg-red-400"}`}
-                      >
-                        <FaShoppingCart className={`text-2xl ${location.pathname === "/cart" ? "text-white" : "text-red-500"}`} />
-                      </a>
-                      <button
-                        onClick={() => signOut(auth)}
-                        className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition"
-                      >
-                        Déconnexion
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <Button size="medium" href="/connect">
-                    Cat Connect
-                  </Button>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

@@ -1,0 +1,44 @@
+{
+  "home": {
+    "hero": {
+      "title": "Bienvenue sur PawMatch",
+      "subtitle": "Où les chats choisissent leurs humains parfaits",
+      "description": "Découvrez notre approche révolutionnaire : ici, ce sont nos adorables félins qui recherchent activement leur compagnon humain idéal. Chaque chat a ses préférences et critères spécifiques !",
+      "buttonViewCats": "Voir les humains",
+      "buttonLearnMore": "En savoir plus"
+    },
+    "features": {
+      "title": "Comment ça marche ?",
+      "cards": [
+        {
+          "icon": "paw",
+          "title": "Les chats postulent",
+          "description": "Chaque chat crée son profil et définit le type d'humain qu'il recherche"
+        },
+        {
+          "icon": "search",
+          "title": "Recherche active",
+          "description": "Nos félins parcourent les profils humains pour trouver leur match parfait"
+        },
+        {
+          "icon": "heart",
+          "title": "Match parfait",
+          "description": "Quand un chat vous choisit, c'est le début d'une belle amitié !"
+        }
+      ]
+    }
+    
+  },
+  "header": {
+      "navHome": "Accueil",
+      "navCats": " Humain disponible",
+      "navAbout": " À propos",
+      "navContact": "Contact",
+      "navWelcome": "Bienvenue,",
+      "navLogout": "Déconnexion",
+      "navConnect": "Connexion"
+    },
+    "footer": {
+      
+    }
+}

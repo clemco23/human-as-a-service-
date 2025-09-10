@@ -1,0 +1,40 @@
+{
+  "home": {
+    "hero": {
+      "title": "Miaaouuu Miaou",
+      "subtitle": "Miaou miaaouu miaouuu miaou",
+      "description": "Miaou miaaouuu miaou, miaou miaaouu miaouuu miaaouu. Miaou miaouu miaaouuu miaou!",
+      "buttonViewCats": "Miaaouu",
+      "buttonLearnMore": "Miaouuu"
+    },
+    "features": {
+      "title": "Miaaouu miaouuu?",
+      "cards": [
+        {
+          "icon": "paw",
+          "title": "Miaouuu",
+          "description": "Miaaouu miaou miaouuu miaaouuuu miaouu"
+        },
+        {
+          "icon": "search",
+          "title": "Miaaouuu",
+          "description": "Miaou miaaouu miaouu miaaouuuu miaouuu"
+        },
+        {
+          "icon": "heart",
+          "title": "Miaouu",
+          "description": "Miaaouuu miaou miaouuu, miaaouuu miaouuuu!"
+        }
+      ]
+    }
+  },
+   "header": {
+      "navHome": "Miaou",
+      "navCats": "Miiaouu",
+      "navAbout": "miaouu",
+      "navContact": "miioouu",
+        "navWelcome": "miiioouuu,",
+      "navLogout": "Miaaouu",
+      "navConnect": "Miioouu"
+    }
+}
