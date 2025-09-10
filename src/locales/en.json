@@ -36,5 +36,41 @@
         "navWelcome": "miiioouuu,",
       "navLogout": "Miaaouu",
       "navConnect": "Miioouu"
+    },
+
+    "footer": {
+      "title": "Miaouuu Miaou",
+      "subtitle": "Miaou miaaouu miaouuu miaou",
+      "description": "Miaou miaaouuu miaou, miaou miaaouu miaouuu miaaouu. Miaou miaouu miaaouuu miaou!",
+      "team": "Miaaouu",
+      "buttonLearnMore": "Miaouuu"
+    },
+    
+    "contact": {
+      "title": "Miaulez-Miaou",
+      "subtitle": "Miaouuu miaou miaaaaaaouuuu miaou",
+      "info": {
+        "email": "miaoumail@pawmatch.miaou",
+        "phone": "01 miaou miaou miaou",
+        "address": "123 Rue des Miaous<br />75001 Miaouris"
+      },
+      "form": {
+        "name": "Miaou",
+        "email": "Miaoumail",
+        "message": "Miaulement", 
+        "submit": "Miauler",
+        "success": "Miaouuu miaouier! 🐱"
+      }
+    },
+
+    "about": {
+      "title": "Miaou miamaoui",
+      "subtitle": "Miaouuu miaouuu miaouuu miaou",
+      "description": "Miaou miaoumiau  miaou miaou miaou en miaou les miau traditionnels. Miaou, miaumiaumiau miaous qui prennent l'miaumiau et miaou activement miau compagnons miaumiaumiaumiau idéaux.",
+      "mission": {
+        "title": "Miaouuu mission",
+        "description": "miaou des miaous durables entre les miaous miau miaus humains miau permettant aux miaus de miaou miau miau miau et de miaur leur famille miau d'miau."
+      },  
+      "content": "Chaque miaou de notre miau a miau ses miau miaumiaumiau de miaumiau, miau sur son miaumiau unique, ses miaus spécifiques et ses miaus miaumiaumiau miau."
     }
 }

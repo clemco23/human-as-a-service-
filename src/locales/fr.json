@@ -40,5 +40,33 @@
     },
     "footer": {
       
+    },
+
+  "contact": {
+    "title": "Miaulez-Nous",
+    "subtitle": "Contactez notre équipe féline",
+    "info": {
+      "email": "catmail@pawmatch.fr",
+      "phone": "01 23 45 67 89",
+      "address": "123 Rue des Chats<br />75001 Paris"
+    },
+    "form": {
+      "name": "Nom",
+      "email": "Catmail", 
+      "message": "Miaulement",
+      "submit": "Miauler",
+      "success": "Miaulement envoyé avec succès ! 🐱"
     }
+  },
+
+  "about": {
+    "title": "À propos de PawMatch",
+    "subtitle": "Notre mission féline",
+    "description": "PawMatch révolutionne l'adoption féline en inversant les rôles traditionnels. Ici, ce sont nos chats qui prennent l'initiative et recherchent activement leurs compagnons humains idéaux.",
+    "mission": {
+      "title": "Notre mission",
+      "description": "Créer des liens durables entre les chats et les humains en permettant aux félins d'exprimer leurs préférences et de choisir leur famille d'adoption."
+    },
+    "content": "Chaque chat de notre plateforme a développé ses propres critères de sélection, basés sur son caractère unique, ses besoins spécifiques et ses préférences de style de vie."
+  }
 }
