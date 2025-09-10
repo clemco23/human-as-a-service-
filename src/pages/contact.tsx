@@ -1,4 +1,4 @@
-import { FaEnvelope, FaPhone, FaBed } from "react-icons/fa";
+import { FaEnvelope, FaPhone,FaCat } from "react-icons/fa";
 export default function Contact() {
     return (
         <section id="contact" className="page py-12 bg-gray-50">
@@ -18,7 +18,7 @@ export default function Contact() {
                             <p className="text-gray-700">01 23 45 67 89</p>
                         </div>
                         <div className="contact-card flex flex-col items-center bg-gray-200 rounded-lg p-6">
-                            <FaBed className="text-2xl text-red-500 mb-2" />
+                            <FaCat className="text-2xl text-red-500 mb-2" />
                             <h3 className="font-semibold text-lg mb-1">Coussin</h3>
                             <p className="text-gray-700 text-center">123 Rue des Chats<br />75001 Paris</p>
                         </div>
