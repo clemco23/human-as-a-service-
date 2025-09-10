@@ -9,7 +9,6 @@ import Footer from './components/molecules/footer';
 import AboutPage from './pages/about';
 import ConnectPage from './pages/connect';
 import RegisterPage from './pages/register';
-import Cart from './pages/cart';
 function AppRouter() {
   return (
     <Router>
@@ -23,7 +22,6 @@ function AppRouter() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/connect" element={<ConnectPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
       <Footer />
