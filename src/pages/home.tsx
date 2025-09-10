@@ -25,9 +25,9 @@ export default function Home() {
               </p>
               <div className="hero-buttons flex flex-wrap gap-4">
            
-                 <Button size="large" color="primary" onClick={() => setActivePage("cats")}> Voir les chats</Button>
+                 <Button size="large" color="primary" onClick={() => setActivePage("cats")} href="/search"> Voir les chats</Button>
                
-                <Button size="large" color="transparent" onClick={() => setActivePage("about")}>En savoir plus</Button>
+                <Button size="large" color="transparent" onClick={() => setActivePage("about")} href="/about">En savoir plus</Button>
               </div>
             </div>
             <div className="hero-image flex justify-center items-center">
