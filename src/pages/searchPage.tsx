@@ -66,11 +66,7 @@ export default function SearchPage() {
 
           <div className="mt-6">
             <label className="mr-2 text-sm font-medium text-gray-700">Tranches d'âges:</label>
-            <select
-              value={ageRange}
-              onChange={e => setAgeRange(e.target.value)}
-              className="border rounded px-4 py-2 text-sm"
-            >
+            <select value={ageRange} onChange={e => setAgeRange(e.target.value)} className="border rounded px-4 py-2 text-sm">
               <option value="">Toutes les tranches</option>
               <option value="10-20">10-20 ans</option>
               <option value="20-30">20-30 ans</option>
@@ -82,11 +78,7 @@ export default function SearchPage() {
 
           <div className="mt-6">
             <label className="mr-2 text-sm font-medium text-gray-700">Personnalité:</label>
-            <select
-              value={personality}
-              onChange={e => setPersonality(e.target.value)}
-              className="border rounded px-4 py-2 text-sm"
-            >
+            <select value={personality} onChange={e => setPersonality(e.target.value)} className="border rounded px-4 py-2 text-sm">
               <option value="">Toutes les personnalités</option>
               <option value="Calme">Calme</option>
               <option value="Aventureux">Aventureux</option>
@@ -98,11 +90,7 @@ export default function SearchPage() {
 
           <div className="mt-6">
             <label className="mr-2 text-sm font-medium text-gray-700">Genre :</label>
-            <select
-              value={genre}
-              onChange={e => setGenre(e.target.value)}
-              className="border rounded px-4 py-2 text-sm"
-            >
+            <select value={genre} onChange={e => setGenre(e.target.value)} className="border rounded px-4 py-2 text-sm">
               <option value="">Pas de préférence</option>
               <option value="M">Homme</option>
               <option value="F">Femme</option>
@@ -110,13 +98,7 @@ export default function SearchPage() {
           </div>
 
           <div className="mt-8">
-            <Button 
-              size="medium" 
-              color="primary" 
-              href="/add-human"
-            >
-              + Ajouter un humain
-            </Button>
+            <Button size="medium" color="primary" href="/add-human">+ Ajouter un humain</Button>
           </div>
         </div>
 
