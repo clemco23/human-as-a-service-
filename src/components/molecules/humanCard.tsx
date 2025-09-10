@@ -28,6 +28,7 @@ export default function HumanCard({
 }: Props) {
   const [isMonthly, setIsMonthly] = useState(true);
   const { addToCart } = useCart();
+    const [showModal, setShowModal] = useState(false);
 
   const handleAddToCart = () => {
     const item = {
@@ -44,9 +45,10 @@ export default function HumanCard({
       isMonthly,
     };
     addToCart(item);
-    alert(
-      `${title} a été ajouté au panier ! (${isMonthly ? `${prix}€ / mois` : `${prix * 12}€ en une fois`})`
-    );
+     setShowModal(true); 
+      setTimeout(() => {
+      setShowModal(false);
+    }, 1500);
   };
 
   return (
@@ -118,6 +120,20 @@ export default function HumanCard({
           Ajouter au panier
         </button>
       </div>
+        {/* Modal */}
+      {showModal && (
+        <div className="fixed  top-4 right-4 bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full text-center animate-fadeIn">
+            <h2 className="text-xl font-bold mb-2 text-red-600">Ajouté au panier 🛒</h2>
+            <p className="text-gray-600 mb-4">
+              {title} a été ajouté au panier ! <br />
+              ({isMonthly ? `${prix}€ / mois` : `${prix * 12}€ en une fois`})
+            </p>
+          </div>
+        </div>
+      )}
     </div>
+
+    
   );
 }
