@@ -1,9 +1,8 @@
-// src/firebase-config.ts
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-// ⚠️ ICI tu mets directement tes clés (pas de .env pour commencer, on simplifie)
-// Tu pourras les déplacer en variables d’environnement ensuite
+
 const firebaseConfig = {
   apiKey: "AIzaSyD7FLYynyapKwilCDHFeD3fSncMnMxnVDA",
   authDomain: "human-as-a-service.firebaseapp.com",
@@ -14,6 +13,6 @@ const firebaseConfig = {
   measurementId: "G-GK7MQM77ZG",
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
