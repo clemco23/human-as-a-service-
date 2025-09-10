@@ -8,7 +8,8 @@
         "description": "Un humain calme et doux, parfait pour les câlins avec un chat timide.",
         "search": "Calin, paisible, tranquille, aime la lecture",
         "image": "../../../public/picture/homme_jeune.jpg",
-        "id": 1
+        "id": 1,
+        "prix": 250
     },
     {
         "title": "Emma Dupont",
@@ -19,7 +20,8 @@
         "description": "Toujours prête pour de nouvelles aventures, adore explorer avec son compagnon félin.",
         "search": "Curieuse, joueuse, aime explorer",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 2
+        "id": 2,
+        "prix": 300
     },
     {
         "title": "Lucas Bernard",
@@ -30,7 +32,8 @@
         "description": "Un humain qui adore passer du temps en famille et choyer son futur chat.",
         "search": "Affectueux, attentionné, doux, sociable",
         "image": "../../../public/picture/homme_jeune.jpg",
-        "id": 3
+        "id": 3,
+        "prix": 400
     },
     {
         "title": "Chloé Lambert",
@@ -41,7 +44,8 @@
         "description": "Active et dynamique, prête à jouer et courir avec son chat.",
         "search": "Énergique, active, sportive",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 4
+        "id": 4,
+        "prix": 350
     },
     {
         "title": "Maxime Leroy",
@@ -52,7 +56,8 @@
         "description": "Organisé et responsable, parfait pour un chat qui a besoin de stabilité.",
         "search": "Responsable, fiable, attentif",
         "image": "../../../public/picture/homme.jpg",
-        "id": 5
+        "id": 5,
+        "prix": 450
     },
     {
         "title": "Sophie Moreau",
@@ -63,7 +68,8 @@
         "description": "Tranquille et posée, idéale pour un chat craintif ou anxieux.",
         "search": "Patient, doux, attentionné",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 6
+        "id": 6,
+        "prix": 280
     },
     {
         "title": "Antoine Roux",
@@ -74,7 +80,8 @@
         "description": "Curieux et joueur, toujours prêt à découvrir de nouveaux jeux avec son chat.",
         "search": "Explorateur, joueur, dynamique",
         "image": "../../../public/picture/homme.jpg",
-        "id": 7
+        "id": 7,
+        "prix": 320
     },
     {
         "title": "Laura Petit",
@@ -85,7 +92,8 @@
         "description": "Adore s’occuper de ses proches et offrira beaucoup d’amour à son chat.",
         "search": "Chaleureuse, affectueuse, sociale",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 8
+        "id": 8,
+        "prix": 420
     },
     {
         "title": "Julien Fabre",
@@ -96,7 +104,8 @@
         "description": "Toujours en mouvement, idéal pour un chat actif et joueur.",
         "search": "Énergique, sportif, dynamique",
         "image": "../../../public/picture/homme.jpg",
-        "id": 9
+        "id": 9,
+        "prix": 380
     },
     {
         "title": "Camille Richard",
@@ -107,7 +116,8 @@
         "description": "Fiable et organisé, offrira un foyer stable à son futur chat.",
         "search": "Fiable, responsable, organisé",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 10
+        "id": 10,
+        "prix": 400
     },
     {
         "title": "Nina Simon",
@@ -118,7 +128,8 @@
         "description": "Douce et patiente, parfaite pour un chat timide ou âgé.",
         "search": "Gentille, douce, patiente",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 11
+        "id": 11,
+        "prix": 220
     },
     {
         "title": "Thomas Michel",
@@ -129,7 +140,8 @@
         "description": "Joueur et curieux, il adore les défis et les nouvelles expériences avec les chats.",
         "search": "Curieux, joueur, dynamique",
         "image": "../../../public/picture/homme_jeune.jpg",
-        "id": 12
+        "id": 12,
+        "prix": 300
     },
     {
         "title": "Alice Girard",
@@ -140,7 +152,8 @@
         "description": "Chaleureuse et affectueuse, elle aime créer des liens forts avec son chat.",
         "search": "Affectueuse, sociale, câline",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 13
+        "id": 13,
+        "prix": 350
     },
     {
         "title": "Bastien Dubois",
@@ -151,7 +164,8 @@
         "description": "Toujours actif, prêt à courir et jouer avec son futur compagnon félin.",
         "search": "Énergique, sportif, joueur",
         "image": "../../../public/picture/homme.jpg",
-        "id": 14
+        "id": 14,
+        "prix": 450
     },
     {
         "title": "Clara Noël",
@@ -162,7 +176,8 @@
         "description": "Responsable et fiable, elle offrira un foyer sûr et structuré à son chat.",
         "search": "Fiable, organisé, attentif",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 15
+        "id": 15,
+        "prix": 320
     },
     {
         "title": "Lucas Fontaine",
@@ -173,7 +188,8 @@
         "description": "Un jeune humain doux et tranquille, parfait pour un chat qui aime la sérénité.",
         "search": "Bordeliqueux, désordonné, inattentif",
         "image": "../../../public/picture/homme_jeune.jpg",
-        "id": 16
+        "id": 16,
+        "prix": 200
     },
     {
         "title": "Lucas Fontaine",
@@ -184,7 +200,8 @@
         "description": "Un jeune humain doux et tranquille, parfait pour un chat qui aime la sérénité.",
         "search": "Bordeliqueux, désordonné, inattentif",
         "image": "../../../public/picture/homme_jeune.jpg",
-        "id": 17
+        "id": 17,
+        "prix": 200
     },
     {
         "title": "Xavier Dupont de Ligonesse",
@@ -195,116 +212,19 @@
         "description": "Un humain calme et capable de tout, parfait pour un chat qui a besoin d'un refuge tranquille.",
         "search": "Rioen, calme, capable",
         "image": "../../../public/picture/homme.jpg",
-        "id": 18
+        "id": 18,
+        "prix": 500
     },
     {
         "title": "Léa Martin",
         "genre": "F",
         "size": 165,
-        "age": 28,
-        "personality": "Aventureux",
-        "description": "Une femme aventureuse qui aime les sorties et les activités de plein air.",
-        "search": "Aventureux, dynamique, sportif",
-        "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 19
-    },
-    {
-        "title": "Raphaël Delcourt",
-        "genre": "M",
-        "size": 170,
-        "age": 32,
-        "personality": "Travailleur",
-        "description": "Un travailleur qui apprécie la routine et la stabilité.",
-        "search": "Stable, fiable, travailleur",
-        "image": "../../../public/picture/homme_jeune.jpg",
-        "id": 20
-    },
-    {
-        "title": "Mélanie Lefebvre",
-        "genre": "F",
-        "size": 160,
-        "age": 25,
-        "personality": "Affectueux",
-        "description": "Une femme affectueuse qui adore les chats et les enfants.",
-        "search": "Affectueux, social, désordonné",
-        "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 21
-    },
-    {
-        "title": "Nicolas Dupont",
-        "genre": "M",
-        "size": 180,
-        "age": 40,
-        "personality": "Sportif",
-        "description": "Un sportif qui aime la compétition et le défi.",
-        "search": "Sportif, compétitif, impatient",
-        "image": "../../../public/picture/homme.jpg",
-        "id": 22
-    },
-    {
-        "title": "Sarah Lefort",
-        "genre": "F",
-        "size": 165,
-        "age": 30,
-        "personality": "Calme",
-        "description": "Une femme calme et douce qui apprécie la lecture et la méditation.",
-        "search": "Calme, doux, indifférent",
-        "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 23
-    },
-    {
-        "title": "Pierre Levasseur",
-        "genre": "M",
-        "size": 170,
-        "age": 35,
-        "personality": "Indépendant",
-        "description": "Un indépendant qui apprécie la liberté et la solitude.",
-        "search": "Indépendant, solitaire, froid",
-        "image": "../../../public/picture/homme_jeune.jpg",
-        "id": 24
-    },
-    {
-        "title": "Marie-France Lepage",
-        "genre": "F",
-        "size": 160,
         "age": 29,
-        "personality": "Affectueux",
-        "description": "Une femme affectueuse qui adore les chats et les enfants.",
-        "search": "Affectueux, social, désordonné",
-        "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 25
-    },
-    {
-        "title": "Antoine Caron",
-        "genre": "M",
-        "size": 180,
-        "age": 42,
         "personality": "Aventureux",
-        "description": "Un aventureux qui aime les sorties et les activités de plein air.",
-        "search": "Aventureux, dynamique, sportif",
-        "image": "../../../public/picture/homme.jpg",
-        "id": 26
-    },
-    {
-        "title": "Marie-Christine Lefebvre",
-        "genre": "F",
-        "size": 165,
-        "age": 27,
-        "personality": "Travailleur",
-        "description": "Une travailleuse qui apprécie la routine et la stabilité.",
-        "search": "Stable, fiable, travailleur",
+        "description": "Toujours prête pour de nouvelles aventures, adore explorer avec son compagnon félin.",
+        "search": "Curieuse, joueuse, aime explorer",
         "image": "../../../public/picture/femme_sourire.jpg",
-        "id": 27
-    },
-    {
-        "title": "Laurent Fontaine",
-        "genre": "M",
-        "size": 170,
-        "age": 33,
-        "personality": "Calme",
-        "description": "Un calme qui apprécie la lecture et la méditation.",
-        "search": "Calme, doux, indifférent",
-        "image": "../../../public/picture/homme_jeune.jpg",
-        "id": 28
+        "id": 19,
+        "prix": 300
     }
 ]
