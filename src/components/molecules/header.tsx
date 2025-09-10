@@ -50,10 +50,18 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 flex-1 justify-center">
-            <Button color="black" size="medium" href="/">Accueil</Button>
-            <Button color="black" size="medium" href="/search">Chat disponible</Button>
-            <Button color="black" size="medium" href="/about">À propos</Button>
-            <Button color="black" size="medium" href="/contact">Contact</Button>
+            <Button color="black" size="medium" href="/">
+              Accueil
+            </Button>
+            <Button color="black" size="medium" href="/search">
+               humain disponible
+            </Button>
+            <Button color="black" size="medium" href="/about">
+              À propos
+            </Button>
+            <Button color="black" size="medium" href="/contact">
+              Contact
+            </Button>
           </nav>
 
           {/* Right side (User info or login) */}
@@ -132,10 +140,21 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 rounded-lg mt-2">
-              <Button color="black" size="medium" href="/">Accueil</Button>
-              <Button color="black" size="medium" href="/search">Chat disponible</Button>
-              <Button color="black" size="medium" href="/about">À propos</Button>
-              <Button color="black" size="medium" href="/contact">Contact</Button>
+              <Button color="black" size="medium" href="/">
+                Accueil
+              </Button>
+              <Button color="black" size="medium" href="/search">
+                Chat disponible
+              </Button>
+              <Button color="black" size="medium" href="/about">
+                À propos
+              </Button>
+              <Button color="black" size="medium" href="/contact">
+                Contact
+              </Button>
+              <Button color="black" size="medium" href="/cart">
+                Pannier
+              </Button>
               <div className="pt-2 border-t border-gray-200">
                 {user ? (
                   <div className="flex flex-col space-y-2">

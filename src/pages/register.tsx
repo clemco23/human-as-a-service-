@@ -81,7 +81,7 @@ const handleRegister = async (e: React.FormEvent) => {
   return (
     <section className="page py-16 max-w-lg mx-auto">
       <div className="container mx-auto px-4">
-        <div className="contact-content max-w-3xl mx-auto bg-red-400 rounded-lg shadow-lg p-8">
+        <div className="contact-content max-w-3xl mx-auto bg-white-400 rounded-lg shadow-lg p-8">
           <h1 className="text-3xl font-bold mb-3 text-center">Créer votre chatière</h1>
           <p className="text-center text-slate-50 mb-8">
             Inscrivez-vous pour rejoindre la communauté féline
