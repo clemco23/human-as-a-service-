@@ -62,9 +62,6 @@ export default function Header() {
             <Button color="black" size="medium" href="/contact">
               Contact
             </Button>
-            <Button color="black" size="medium" href="/cart">
-              Pannier
-            </Button>
           </nav>
 
           {/* Right side (User info or login) */}
