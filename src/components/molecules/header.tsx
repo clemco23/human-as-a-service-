@@ -55,7 +55,7 @@ export default function Header() {
                 <a
                   href="/cart"
                   aria-label="Panier"
-                  className={`flex items-center justify-center rounded-lg p-2 transition ${location.pathname === "/cart" ? "bg-red-400" : "bg-gray-200 hover:bg-red-400"}`}
+                  className={`flex items-center justify-center rounded-lg p-2 transition ${location.pathname === "/cart" ? "bg-red-400" : " hover:bg-red-400"}`}
                 >
                   <FaShoppingCart className={`text-2xl ${location.pathname === "/cart" ? "text-white" : "text-red-500"}`} />
                 </a>
