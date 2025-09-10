@@ -2,7 +2,7 @@ const currentYear = new Date().getFullYear();
 
 export default function FooterWithSocialMediaLinks() {
     return (
-    <footer className="w-full mt-auto bg-[#2C3E50] text-white py-8">
+    <footer className="w-full bg-[#2C3E50] text-white py-8">
     <div className="w-full">
         <div className="mx-auto max-w-7xl px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

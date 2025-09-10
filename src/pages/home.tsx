@@ -5,8 +5,7 @@ import { FaSearch, FaCat, FaHeart, FaPaw } from "react-icons/fa";
 export default function Home() {
      const [activePage, setActivePage] = useState("home");
     return (
-        <main className=" bg-grey main-content min-h-[calc(100vh-80px)]">
-            
+        <main className=" bg-grey main-content">
       {/* Home Page */}
       {activePage === "home" && (
         <section id="home" className="page active animate-fadeIn">
