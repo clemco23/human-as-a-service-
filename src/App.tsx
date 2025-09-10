@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css'
 
 import HomePage from './pages/home'
-import ContactPage from './pages/contact'
+import Contact from './pages/contact'
 import SearchPage from './pages/searchPage'
 import Header from './components/molecules/header';
 import Footer from './components/molecules/footer';
@@ -17,7 +17,7 @@ function AppRouter() {
       <main className="flex-1">    
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/connect" element={<ConnectPage />} />
