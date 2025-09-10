@@ -20,6 +20,7 @@ export default function CardsPart({ data }: Props) {
           search={person.search}
           genre={person.genre}
           size={person.size}
+          prix={person.prix}
         />
       ))}
     </div>
