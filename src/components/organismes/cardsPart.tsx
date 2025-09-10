@@ -26,4 +26,3 @@ export default function CardsPart({ data }: Props) {
     </div>
   );
 }
-

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCart } from "../../contexts/CartContext";
 
 type Props = {
   image?: string;
@@ -11,24 +12,46 @@ type Props = {
   genre: string;
   size: number;
   prix: number;
-}
+};
 
-export default function HumanCard({ id, image, title, age, personality, description, search, genre, size, prix }: Props) {
-  
+export default function HumanCard({
+  id,
+  image,
+  title,
+  age,
+  personality,
+  description,
+  search,
+  genre,
+  size,
+  prix,
+}: Props) {
   const [isMonthly, setIsMonthly] = useState(true);
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    console.log(
-      `Ajouté au panier : ${title} (${isMonthly ? "Par mois" : "Achat unique"})`
+    const item = {
+      id: String(id),
+      title,
+      image: image || "",
+      age,
+      personality,
+      description,
+      search,
+      genre,
+      size,
+      price: isMonthly ? prix : prix * 12,
+      isMonthly,
+    };
+    addToCart(item);
+    alert(
+      `${title} a été ajouté au panier ! (${isMonthly ? `${prix}€ / mois` : `${prix * 12}€ en une fois`})`
     );
-    alert(`${title} a été ajouté au panier ! (${isMonthly ? `${prix}€ / mois` : `${prix * 12}€ en une fois`})`);
-
   };
+
   return (
     <div className="max-w-sm mx-auto bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-
-
-      <p className="text-gray-500  mb-3">{id}</p>
+      <p className="text-gray-500 mb-3">{id}</p>
       <img
         src={image}
         alt={title}
@@ -53,18 +76,22 @@ export default function HumanCard({ id, image, title, age, personality, descript
         <h3 className="text-md font-semibold text-gray-800 mb-2">Pourquoi me prendre :</h3>
         <p className="text-gray-600 text-sm leading-snug">{search}</p>
       </div>
+
+      {/* Toggle abonnement/achat unique */}
       <div className="flex items-center justify-center gap-3 mt-4">
         <span className={`text-sm ${isMonthly ? "text-gray-900 font-medium" : "text-gray-400"}`}>
           Par mois
         </span>
         <button
           onClick={() => setIsMonthly(!isMonthly)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 transition ${isMonthly ? "bg-blue-500" : "bg-green-300"
-            }`}
+          className={`w-12 h-6 flex items-center rounded-full p-1 transition ${
+            isMonthly ? "bg-blue-500" : "bg-green-300"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition ${isMonthly ? "translate-x-0" : "translate-x-6"
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition ${
+              isMonthly ? "translate-x-0" : "translate-x-6"
+            }`}
           />
         </button>
         <span className={`text-sm ${!isMonthly ? "text-gray-900 font-medium" : "text-gray-400"}`}>
@@ -72,13 +99,17 @@ export default function HumanCard({ id, image, title, age, personality, descript
         </span>
       </div>
 
-
+      {/* Prix affiché */}
       <div className="mt-4 text-center">
-        <span className="text-xl font-bold text-gray-900"> {!isMonthly ? prix * 12 : prix} €</span>
+        <span className="text-xl font-bold text-gray-900">
+          {!isMonthly ? prix * 12 : prix} €
+        </span>
         <span className="text-sm text-gray-500">
           {isMonthly ? " / mois" : " en une fois"}
         </span>
       </div>
+
+      {/* Bouton ajouter au panier */}
       <div className="mt-6 text-center">
         <button
           onClick={handleAddToCart}
@@ -88,5 +119,5 @@ export default function HumanCard({ id, image, title, age, personality, descript
         </button>
       </div>
     </div>
-  )
+  );
 }
