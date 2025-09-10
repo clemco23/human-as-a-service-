@@ -54,7 +54,7 @@ export default function Header() {
               Accueil
             </Button>
             <Button color="black" size="medium" href="/search">
-              Chat disponible
+               humain disponible
             </Button>
             <Button color="black" size="medium" href="/about">
               À propos
