@@ -1,16 +1,39 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 import { onAuthStateChanged, signOut, type User } from "firebase/auth";
-import { auth } from "../../firebase-config"; 
+import { auth, db } from "../../firebase-config"; 
+import { doc, getDoc } from "firebase/firestore";
 import Button from "../atoms/button";
 
 export default function Header() {
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [displayName, setDisplayName] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+
+      if (currentUser) {
+        try {
+          const userDocRef = doc(db, "users", currentUser.uid);
+          const userDoc = await getDoc(userDocRef);
+          if (userDoc.exists()) {
+            setDisplayName(userDoc.data().name as string);
+          } else {
+            setDisplayName(null);
+          }
+        } catch (err) {
+          console.error("Erreur récupération nom utilisateur :", err);
+          setDisplayName(null);
+        }
+      } else {
+        setDisplayName(null);
+      }
     });
+
     return () => unsubscribe();
   }, []);
 
@@ -27,18 +50,10 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 flex-1 justify-center">
-            <Button color="black" size="medium" href="/">
-              Accueil
-            </Button>
-            <Button color="black" size="medium" href="/search">
-              Chat disponible
-            </Button>
-            <Button color="black" size="medium" href="/about">
-              À propos
-            </Button>
-            <Button color="black" size="medium" href="/contact">
-              Contact
-            </Button>
+            <Button color="black" size="medium" href="/">Accueil</Button>
+            <Button color="black" size="medium" href="/search">Chat disponible</Button>
+            <Button color="black" size="medium" href="/about">À propos</Button>
+            <Button color="black" size="medium" href="/contact">Contact</Button>
           </nav>
 
           {/* Right side (User info or login) */}
@@ -46,8 +61,16 @@ export default function Header() {
             {user ? (
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-700">
-                  Bienvenue, {user.displayName || user.email}
+                  Bienvenue, {displayName || user.email}
                 </span>
+                {/* Icône panier cliquable */}
+                <a
+                  href="/cart"
+                  aria-label="Panier"
+                  className={`flex items-center justify-center rounded-lg p-2 transition ${location.pathname === "/cart" ? "bg-red-400" : " hover:bg-red-400"}`}
+                >
+                  <FaShoppingCart className={`text-2xl ${location.pathname === "/cart" ? "text-white" : "text-red-500"}`} />
+                </a>
                 <button
                   onClick={() => signOut(auth)}
                   className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition"
@@ -109,30 +132,31 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 rounded-lg mt-2">
-              <Button color="black" size="medium" href="/">
-                Accueil
-              </Button>
-              <Button color="black" size="medium" href="/search">
-                Chat disponible
-              </Button>
-              <Button color="black" size="medium" href="/about">
-                À propos
-              </Button>
-              <Button color="black" size="medium" href="/contact">
-                Contact
-              </Button>
+              <Button color="black" size="medium" href="/">Accueil</Button>
+              <Button color="black" size="medium" href="/search">Chat disponible</Button>
+              <Button color="black" size="medium" href="/about">À propos</Button>
+              <Button color="black" size="medium" href="/contact">Contact</Button>
               <div className="pt-2 border-t border-gray-200">
                 {user ? (
                   <div className="flex flex-col space-y-2">
                     <span className="text-sm text-gray-700">
-                      Bienvenue, {user.displayName || user.email}
+                      Bienvenue, {displayName || user.email}
                     </span>
-                    <button
-                      onClick={() => signOut(auth)}
-                      className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition"
-                    >
-                      Déconnexion
-                    </button>
+                    <div className="flex items-center space-x-2">
+                      <a
+                        href="/cart"
+                        aria-label="Panier"
+                        className={`flex items-center justify-center rounded-lg p-2 transition ${location.pathname === "/cart" ? "bg-red-400" : "bg-gray-200 hover:bg-red-400"}`}
+                      >
+                        <FaShoppingCart className={`text-2xl ${location.pathname === "/cart" ? "text-white" : "text-red-500"}`} />
+                      </a>
+                      <button
+                        onClick={() => signOut(auth)}
+                        className="bg-red-400 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                      >
+                        Déconnexion
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <Button size="medium" href="/connect">
