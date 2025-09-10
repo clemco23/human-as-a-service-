@@ -29,6 +29,9 @@ export default function Header() {
             <Button color="black" size="medium" href="/contact">
               Contact
             </Button>
+            <Button color="black" size="medium" href="/cart">
+              Pannier
+            </Button>
           </nav>
 
           {/* Cat Connect - Desktop */}
@@ -74,6 +77,9 @@ export default function Header() {
               </Button>
               <Button color="black" size="medium" href="/contact">
                 Contact
+              </Button>
+              <Button color="black" size="medium" href="/cart">
+                Pannier
               </Button>
               <div className="pt-2 border-t border-gray-200">
                 <Button size="medium">
