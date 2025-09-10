@@ -3,6 +3,9 @@ import { auth, db } from "../firebase-config";
 import { createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+
+
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -13,14 +16,15 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
 
-    if (password !== confirmPassword) {
-      setError("Les clés ne correspondent pas 🐾");
-      return;
-    }
+const handleRegister = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError("");
+
+  if (password !== confirmPassword) {
+    setError("Les clés ne correspondent pas 🐾");
+    return;
+  }
 
     try {
       setLoading(true);
@@ -52,6 +56,27 @@ export default function Register() {
       setLoading(false);
     }
   };
+ try {
+  setLoading(true);
+
+
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+
+  await updateProfile(userCredential.user, { displayName: name });
+
+ 
+  await auth.currentUser?.reload();
+
+ 
+  navigate("/connect");
+
+} catch (err: any) {
+  setError(err.message);
+} finally {
+  setLoading(false);
+}
+};
 
   return (
     <section className="page py-16 max-w-lg mx-auto">
@@ -122,3 +147,4 @@ export default function Register() {
     </section>
   );
 }
+
