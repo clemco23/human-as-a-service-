@@ -3,6 +3,7 @@ import { auth, db } from "../firebase-config";
 import { createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -18,7 +20,7 @@ export default function Register() {
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Les clés ne correspondent pas 🐾");
+      setError(t("register.error.passwordMismatch"));
       return;
     }
 
@@ -57,16 +59,16 @@ export default function Register() {
     <section className="page py-16 max-w-lg mx-auto">
       <div className="container mx-auto px-4">
         <div className="contact-content max-w-3xl mx-auto bg-white-400 rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold mb-3 text-center">Créer votre chatière</h1>
+          <h1 className="text-3xl font-bold mb-3 text-center">{t("register.title")}</h1>
           <p className="text-center text-slate-50 mb-8">
-            Inscrivez-vous pour rejoindre la communauté féline
+            {t("register.subtitle")}
           </p>
 
           <form onSubmit={handleRegister} className="space-y-6">
             {error && <p className="text-red-500 text-center">{error}</p>}
 
             <div>
-              <label className="block font-medium mb-1">Nom de chatière</label>
+              <label className="block font-medium mb-1">{t("register.form.name")}</label>
               <input
                 type="text"
                 value={name}
@@ -77,7 +79,7 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block font-medium mb-1">Catmail</label>
+              <label className="block font-medium mb-1">{t("register.form.email")}</label>
               <input
                 type="email"
                 value={email}
@@ -88,7 +90,7 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block font-medium mb-1">Clé de chatière</label>
+              <label className="block font-medium mb-1">{t("register.form.password")}</label>
               <input
                 type="password"
                 value={password}
@@ -99,7 +101,7 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block font-medium mb-1">Confirmez la clé</label>
+              <label className="block font-medium mb-1">{t("register.form.confirmPassword")}</label>
               <input
                 type="password"
                 value={confirmPassword}
@@ -114,7 +116,7 @@ export default function Register() {
               disabled={loading}
               className="w-full bg-red-600 text-white font-semibold py-2 rounded hover:bg-red-700 transition"
             >
-              {loading ? "Création en cours..." : "Créer ma chatière"}
+              {loading ? t("register.form.loading") : t("register.form.submit")}
             </button>
           </form>
         </div>

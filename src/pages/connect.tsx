@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -21,7 +23,7 @@ export default function Login() {
    
       navigate("/");
     } catch (err: any) {
-      setError("Catmail ou clé incorrecte 🐾");
+      setError(t("login.error"));
     } finally {
       setLoading(false);
     }
@@ -32,10 +34,10 @@ export default function Login() {
       <div className="container mx-auto px-4">
         <div className="contact-content max-w-3xl mx-auto bg-red rounded-lg shadow-lg p-8">
           <h1 className="text-3xl font-bold mb-3 text-center">
-            Accès à votre chatière
+            {t("login.title")}
           </h1>
           <p className="text-center text-slate-500 mb-8">
-            Ouvrez votre chatière pour trouver votre humain parfait
+            {t("login.subtitle")}
           </p>
 
           <form onSubmit={handleLogin} className="space-y-6">
@@ -43,7 +45,7 @@ export default function Login() {
 
             <div>
               <label htmlFor="email" className="block font-medium mb-1">
-                Catmail
+                {t("login.form.email")}
               </label>
               <input
                 type="email"
@@ -57,7 +59,7 @@ export default function Login() {
 
             <div>
               <label htmlFor="password" className="block font-medium mb-1">
-                Clé de chatière
+                {t("login.form.password")}
               </label>
               <input
                 type="password"
@@ -73,14 +75,14 @@ export default function Login() {
               <div className="flex items-center">
                 <input type="checkbox" id="remember" className="mr-2" />
                 <label htmlFor="remember" className="text-sm">
-                  Garder ma chatière ouverte
+                  {t("login.form.remember")}
                 </label>
               </div>
               <a
                 href="#"
                 className="text-red-400 font-bold text-sm"
               >
-                J'ai perdu les clés de ma chatière
+                {t("login.form.forgotPassword")}
               </a>
             </div>
 
@@ -89,13 +91,13 @@ export default function Login() {
               disabled={loading}
               className="w-full bg-red-400 text-white font-semibold py-2 rounded hover:bg-red-600 transition"
             >
-              {loading ? "Ouverture en cours..." : "Ouvrir ma chatière"}
+              {loading ? t("login.form.loading") : t("login.form.submit")}
             </button>
 
             <div className="text-center mt-6">
               <p className="text-sm text-gray-600">
                 <a href="/register" className="text-red-400 font-bold">
-                  Créer une chatière
+                  {t("login.form.createAccount")}
                 </a>
               </p>
             </div>
@@ -103,14 +105,12 @@ export default function Login() {
 
           <div className="mt-8 pt-6 border-t bg-gray-100 rounded-xl border-gray-100 p-8">
             <h3 className="text-lg font-semibold mb-4 text-center">
-              Pourquoi créer une chatière ?
+              {t("login.benefits.title")}
             </h3>
             <ul className="text-sm text-gray-600 space-y-2">
-              <li>🐾 Créer votre profil d'humain unique</li>
-              <li>🏠 Recevoir vos profils d'humains favoris</li>
-              <li>💝 Sauvegarder vos humains préférés</li>
-              <li>🎯 Communiquer avec vos humains</li>
-              <li>📱 Accéder à tous nos services félins</li>
+              {(t("login.benefits.items", { returnObjects: true }) as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
           </div>
         </div>
