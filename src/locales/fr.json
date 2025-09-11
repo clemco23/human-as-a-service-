@@ -132,5 +132,47 @@
         "month": "/ mois",
         "year": "en une fois"
       }
+    },
+
+    "addHuman": {
+      "title": "Ajouter un nouvel humain",
+      "subtitle": "Aidez un humain à trouver son chat parfait en remplissant ce formulaire",
+      "form": {
+        "name": "Nom complet",
+        "namePlaceholder": "Ex: Jean Dupont",
+        "age": "Âge",
+        "agePlaceholder": "Ex: 25",
+        "size": "Taille (cm)",
+        "sizePlaceholder": "Ex: 175",
+        "gender": "Genre",
+        "genderPlaceholder": "Sélectionner un genre",
+        "genderOptions": {
+          "male": "Homme",
+          "female": "Femme"
+        },
+        "personality": "Personnalité",
+        "personalityPlaceholder": "Sélectionner une personnalité",
+        "personalityOptions": {
+          "calm": "Calme",
+          "adventurous": "Aventureux",
+          "family": "Familial",
+          "sporty": "Sportif",
+          "worker": "Travailleur"
+        },
+        "description": "Description",
+        "descriptionPlaceholder": "Décrivez cet humain...",
+        "search": "Pourquoi me prendre ? (mots-clés)",
+        "searchPlaceholder": "Ex: calme, sportif, joueur",
+        "image": "URL de l'image",
+        "imagePlaceholder": "https://exemple.com/photo.jpg",
+        "price": "Prix (€)",
+        "pricePlaceholder": "Ex: 250",
+        "submit": "Ajouter cet humain",
+        "cancel": "Annuler"
+      },
+      "messages": {
+        "success": "Humain ajouté avec succès ✅",
+        "error": "Échec de l'ajout ❌ (voir console)"
+      }
     }
 }

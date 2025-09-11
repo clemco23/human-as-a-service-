@@ -132,6 +132,48 @@
         "month": "Miaou",
         "year": "Miaou miaou miaou"
       }
+    },
+
+    "addHuman": {
+      "title": "Miaou un miaou miaou",
+      "subtitle": "Miaou un miaou à miaou son miaou parfait en miaou ce miaou",
+      "form": {
+        "name": "Miaou miaou",
+        "namePlaceholder": "Miaou: Miaou Miaou",
+        "age": "Miaou",
+        "agePlaceholder": "Miaou: 25",
+        "size": "Miaou (miaou)",
+        "sizePlaceholder": "Miaou: 175",
+        "gender": "Miaou",
+        "genderPlaceholder": "Miaou un miaou",
+        "genderOptions": {
+          "male": "Miaou",
+          "female": "Miaou"
+        },
+        "personality": "Miaou",
+        "personalityPlaceholder": "Miaou une miaou",
+        "personalityOptions": {
+          "calm": "Miaou",
+          "adventurous": "Miaou",
+          "family": "Miaou",
+          "sporty": "Miaou",
+          "worker": "Miaou"
+        },
+        "description": "Miaou",
+        "descriptionPlaceholder": "Miaou cet miaou...",
+        "search": "Miaou me miaou ? (miaou-miaous)",
+        "searchPlaceholder": "Miaou: miaou, miaou, miaou",
+        "image": "Miaou de l'miaou",
+        "imagePlaceholder": "https://miaou.com/miaou.jpg",
+        "price": "Miaou (€)",
+        "pricePlaceholder": "Miaou: 250",
+        "submit": "Miaou cet miaou",
+        "cancel": "Miaou"
+      },
+      "messages": {
+        "success": "Miaou miaou avec miaou ✅",
+        "error": "Miaou de l'miaou ❌ (miaou miaou)"
+      }
     }
 }
 

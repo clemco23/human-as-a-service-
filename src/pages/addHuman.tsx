@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import Button from "../components/atoms/button";
 import { db } from "../firebase-config";
 import { collection, addDoc, getDocs } from "firebase/firestore";
+import { useTranslation } from "react-i18next";
 
 export default function AddHuman() {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState({
         title: "",
         age: "",
@@ -47,7 +49,7 @@ export default function AddHuman() {
             createdAt: new Date(),
         });
 
-        alert("Humain ajouté avec succès ✅");
+        alert(t("addHuman.messages.success"));
 
         setFormData({
             title: "",
@@ -62,7 +64,7 @@ export default function AddHuman() {
         });
     } catch (error) {
         console.error("Erreur lors de l’ajout :", error);
-        alert("Échec de l’ajout ❌ (voir console)");
+        alert(t("addHuman.messages.error"));
     }
 };
 
@@ -72,11 +74,10 @@ export default function AddHuman() {
                 <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
                     <div className="text-center mb-8">
                         <h1 className="text-3xl font-bold text-gray-900 mb-4">
-                            Ajouter un nouvel humain
+                            {t("addHuman.title")}
                         </h1>
                         <p className="text-gray-600">
-                            Aidez un humain à trouver son chat parfait en remplissant ce
-                            formulaire
+                            {t("addHuman.subtitle")}
                         </p>
                     </div>
 
@@ -87,7 +88,7 @@ export default function AddHuman() {
                                 htmlFor="title"
                                 className="block text-sm font-medium text-gray-700 mb-2"
                             >
-                                Nom complet
+                                {t("addHuman.form.name")}
                             </label>
                             <input
                                 type="text"
@@ -96,7 +97,7 @@ export default function AddHuman() {
                                 onChange={handleChange}
                                 required
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                                placeholder="Ex: Jean Dupont"
+                                placeholder={t("addHuman.form.namePlaceholder")}
                             />
                         </div>
 
@@ -107,7 +108,7 @@ export default function AddHuman() {
                                     htmlFor="age"
                                     className="block text-sm font-medium text-gray-700 mb-2"
                                 >
-                                    Âge
+                                    {t("addHuman.form.age")}
                                 </label>
                                 <input
                                     type="number"
@@ -116,7 +117,7 @@ export default function AddHuman() {
                                     onChange={handleChange}
                                     required
                                     className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                                    placeholder="Ex: 25"
+                                    placeholder={t("addHuman.form.agePlaceholder")}
                                 />
                             </div>
 
@@ -125,7 +126,7 @@ export default function AddHuman() {
                                     htmlFor="size"
                                     className="block text-sm font-medium text-gray-700 mb-2"
                                 >
-                                    Taille (cm)
+                                    {t("addHuman.form.size")}
                                 </label>
                                 <input
                                     type="number"
@@ -134,7 +135,7 @@ export default function AddHuman() {
                                     onChange={handleChange}
                                     required
                                     className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                                    placeholder="Ex: 175"
+                                    placeholder={t("addHuman.form.sizePlaceholder")}
                                 />
                             </div>
                         </div>
@@ -145,7 +146,7 @@ export default function AddHuman() {
                                 htmlFor="genre"
                                 className="block text-sm font-medium text-gray-700 mb-2"
                             >
-                                Genre
+                                {t("addHuman.form.gender")}
                             </label>
                             <select
                                 id="genre"
@@ -154,9 +155,9 @@ export default function AddHuman() {
                                 required
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2"
                             >
-                                <option value="">Sélectionner un genre</option>
-                                <option value="M">Homme</option>
-                                <option value="F">Femme</option>
+                                <option value="">{t("addHuman.form.genderPlaceholder")}</option>
+                                <option value="M">{t("addHuman.form.genderOptions.male")}</option>
+                                <option value="F">{t("addHuman.form.genderOptions.female")}</option>
                             </select>
                         </div>
 
@@ -166,7 +167,7 @@ export default function AddHuman() {
                                 htmlFor="personality"
                                 className="block text-sm font-medium text-gray-700 mb-2"
                             >
-                                Personnalité
+                                {t("addHuman.form.personality")}
                             </label>
                             <select
                                 id="personality"
@@ -175,12 +176,12 @@ export default function AddHuman() {
                                 required
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2"
                             >
-                                <option value="">Sélectionner une personnalité</option>
-                                <option value="Calme">Calme</option>
-                                <option value="Aventureux">Aventureux</option>
-                                <option value="Familial">Familial</option>
-                                <option value="Sportif">Sportif</option>
-                                <option value="Travailleur">Travailleur</option>
+                                <option value="">{t("addHuman.form.personalityPlaceholder")}</option>
+                                <option value="Calme">{t("addHuman.form.personalityOptions.calm")}</option>
+                                <option value="Aventureux">{t("addHuman.form.personalityOptions.adventurous")}</option>
+                                <option value="Familial">{t("addHuman.form.personalityOptions.family")}</option>
+                                <option value="Sportif">{t("addHuman.form.personalityOptions.sporty")}</option>
+                                <option value="Travailleur">{t("addHuman.form.personalityOptions.worker")}</option>
                             </select>
                         </div>
 
@@ -190,7 +191,7 @@ export default function AddHuman() {
                                 htmlFor="description"
                                 className="block text-sm font-medium text-gray-700 mb-2"
                             >
-                                Description
+                                {t("addHuman.form.description")}
                             </label>
                             <textarea
                                 id="description"
@@ -199,7 +200,7 @@ export default function AddHuman() {
                                 rows={4}
                                 required
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                                placeholder="Décrivez cet humain..."
+                                placeholder={t("addHuman.form.descriptionPlaceholder")}
                             />
                         </div>
 
@@ -209,7 +210,7 @@ export default function AddHuman() {
                                 htmlFor="search"
                                 className="block text-sm font-medium text-gray-700 mb-2"
                             >
-                                Pourquoi me prendre ? (mots-clés)
+                                {t("addHuman.form.search")}
                             </label>
                             <input
                                 type="text"
@@ -217,7 +218,7 @@ export default function AddHuman() {
                                 value={formData.search}
                                 onChange={handleChange}
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                                placeholder="Ex: calme, sportif, joueur"
+                                placeholder={t("addHuman.form.searchPlaceholder")}
                             />
                         </div>
 
@@ -227,7 +228,7 @@ export default function AddHuman() {
                                 htmlFor="image"
                                 className="block text-sm font-medium text-gray-700 mb-2"
                             >
-                                URL de l'image
+                                {t("addHuman.form.image")}
                             </label>
                             <input
                                 type="text"
@@ -235,7 +236,7 @@ export default function AddHuman() {
                                 value={formData.image}
                                 onChange={handleChange}
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                                placeholder="https://exemple.com/photo.jpg"
+                                placeholder={t("addHuman.form.imagePlaceholder")}
                             />
                         </div>
 
@@ -245,7 +246,7 @@ export default function AddHuman() {
                                 htmlFor="prix"
                                 className="block text-sm font-medium text-gray-700 mb-2"
                             >
-                                Prix (€)
+                                {t("addHuman.form.price")}
                             </label>
                             <input
                                 type="number"
@@ -254,18 +255,18 @@ export default function AddHuman() {
                                 onChange={handleChange}
                                 required
                                 className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                                placeholder="Ex: 250"
+                                placeholder={t("addHuman.form.pricePlaceholder")}
                             />
                         </div>
 
                         {/* Boutons */}
                         <div className="flex gap-4 pt-6">
                             <Button size="large" color="primary" type="submit">
-                                Ajouter cet humain
+                                {t("addHuman.form.submit")}
                             </Button>
 
                             <Button size="large" color="transparent" type="button" href="/search">
-                                Annuler
+                                {t("addHuman.form.cancel")}
                             </Button>
                         </div>
                     </form>
