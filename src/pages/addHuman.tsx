@@ -1,41 +1,70 @@
-import { useState } from 'react';
-import Button from '../components/atoms/button';
+import { useState, useEffect } from "react";
+import Button from "../components/atoms/button";
+import { db } from "../firebase-config";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 export default function AddHuman() {
     const [formData, setFormData] = useState({
-        name: '',
-        age: '',
-        genre: '',
-        personality: '',
-        description: '',
-        hobbies: '',
-        location: '',
-        image: ''
+        title: "",
+        age: "",
+        genre: "",
+        size: "",
+        personality: "",
+        description: "",
+        search: "",
+        image: "",
+        prix: "",
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
+    ) => {
         setFormData({
             ...formData,
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value,
         });
     };
+    const [Data, setData] = useState<unknown[]>([]);
+    useEffect(() => { const fetchHumans = async () => { try { const snapshot = await getDocs(collection(db, "products")); const humans = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); setData(humans); } catch (error) { console.error("Erreur récupération Firestore :", error); } }; fetchHumans(); }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Logique d'ajout à implémenter plus tard
-        console.log('Nouvel humain à ajouter:', formData);
-        alert('Humain ajouté avec succès ! 🐱');
-        setFormData({
-            name: '',
-            age: '',
-            genre: '',
-            personality: '',
-            description: '',
-            hobbies: '',
-            location: '',
-            image: ''
+    const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+        
+        const snapshot = await getDocs(collection(db, "products"));
+        const nextId = snapshot.size + 1; 
+
+        
+        await addDoc(collection(db, "products"), {
+            id: nextId,
+            ...formData,
+            age: Number(formData.age),
+            size: Number(formData.size),
+            prix: Number(formData.prix),
+            createdAt: new Date(),
         });
-    };
+
+        alert("Humain ajouté avec succès ✅");
+
+        setFormData({
+            title: "",
+            age: "",
+            genre: "",
+            size: "",
+            personality: "",
+            description: "",
+            search: "",
+            image: "",
+            prix: "",
+        });
+    } catch (error) {
+        console.error("Erreur lors de l’ajout :", error);
+        alert("Échec de l’ajout ❌ (voir console)");
+    }
+};
 
     return (
         <section className="page py-12 bg-gray-50 min-h-screen">
@@ -46,29 +75,38 @@ export default function AddHuman() {
                             Ajouter un nouvel humain
                         </h1>
                         <p className="text-gray-600">
-                            Aidez un humain à trouver son chat parfait en remplissant ce formulaire
+                            Aidez un humain à trouver son chat parfait en remplissant ce
+                            formulaire
                         </p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Nom complet
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
-                                    placeholder="Ex: Jean Dupont"
-                                />
-                            </div>
+                        {/* Nom */}
+                        <div>
+                            <label
+                                htmlFor="title"
+                                className="block text-sm font-medium text-gray-700 mb-2"
+                            >
+                                Nom complet
+                            </label>
+                            <input
+                                type="text"
+                                id="title"
+                                value={formData.title}
+                                onChange={handleChange}
+                                required
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                                placeholder="Ex: Jean Dupont"
+                            />
+                        </div>
 
+                        {/* Âge et Taille */}
+                        <div className="grid grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label
+                                    htmlFor="age"
+                                    className="block text-sm font-medium text-gray-700 mb-2"
+                                >
                                     Âge
                                 </label>
                                 <input
@@ -77,98 +115,81 @@ export default function AddHuman() {
                                     value={formData.age}
                                     onChange={handleChange}
                                     required
-                                    min="18"
-                                    max="100"
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-2"
                                     placeholder="Ex: 25"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    htmlFor="size"
+                                    className="block text-sm font-medium text-gray-700 mb-2"
+                                >
+                                    Taille (cm)
+                                </label>
+                                <input
+                                    type="number"
+                                    id="size"
+                                    value={formData.size}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                                    placeholder="Ex: 175"
                                 />
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label htmlFor="genre" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Genre
-                                </label>
-                                <select
-                                    id="genre"
-                                    value={formData.genre}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
-                                >
-                                    <option value="">Sélectionner un genre</option>
-                                    <option value="M">Homme</option>
-                                    <option value="F">Femme</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label htmlFor="personality" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Personnalité
-                                </label>
-                                <select
-                                    id="personality"
-                                    value={formData.personality}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
-                                >
-                                    <option value="">Sélectionner une personnalité</option>
-                                    <option value="Calme">Calme</option>
-                                    <option value="Aventureux">Aventureux</option>
-                                    <option value="Familial">Familial</option>
-                                    <option value="Sportif">Sportif</option>
-                                    <option value="Travailleur">Travailleur</option>
-                                </select>
-                            </div>
-                        </div>
-
+                        {/* Genre */}
                         <div>
-                            <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
-                                Localisation
+                            <label
+                                htmlFor="genre"
+                                className="block text-sm font-medium text-gray-700 mb-2"
+                            >
+                                Genre
                             </label>
-                            <input
-                                type="text"
-                                id="location"
-                                value={formData.location}
+                            <select
+                                id="genre"
+                                value={formData.genre}
                                 onChange={handleChange}
                                 required
-                                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
-                                placeholder="Ex: Paris, France"
-                            />
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                            >
+                                <option value="">Sélectionner un genre</option>
+                                <option value="M">Homme</option>
+                                <option value="F">Femme</option>
+                            </select>
                         </div>
 
+                        {/* Personnalité */}
                         <div>
-                            <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
-                                URL de la photo
+                            <label
+                                htmlFor="personality"
+                                className="block text-sm font-medium text-gray-700 mb-2"
+                            >
+                                Personnalité
                             </label>
-                            <input
-                                type="url"
-                                id="image"
-                                value={formData.image}
+                            <select
+                                id="personality"
+                                value={formData.personality}
                                 onChange={handleChange}
-                                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
-                                placeholder="https://exemple.com/photo.jpg"
-                            />
+                                required
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                            >
+                                <option value="">Sélectionner une personnalité</option>
+                                <option value="Calme">Calme</option>
+                                <option value="Aventureux">Aventureux</option>
+                                <option value="Familial">Familial</option>
+                                <option value="Sportif">Sportif</option>
+                                <option value="Travailleur">Travailleur</option>
+                            </select>
                         </div>
 
+                        {/* Description */}
                         <div>
-                            <label htmlFor="hobbies" className="block text-sm font-medium text-gray-700 mb-2">
-                                Hobbies et centres d'intérêt
-                            </label>
-                            <input
-                                type="text"
-                                id="hobbies"
-                                value={formData.hobbies}
-                                onChange={handleChange}
-                                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
-                                placeholder="Ex: Lecture, jardinage, cuisine"
-                            />
-                        </div>
-
-                        <div>
-                            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+                            <label
+                                htmlFor="description"
+                                className="block text-sm font-medium text-gray-700 mb-2"
+                            >
                                 Description
                             </label>
                             <textarea
@@ -177,25 +198,73 @@ export default function AddHuman() {
                                 onChange={handleChange}
                                 rows={4}
                                 required
-                                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
-                                placeholder="Décrivez cet humain et ce qu'il recherche chez un chat..."
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                                placeholder="Décrivez cet humain..."
                             />
                         </div>
 
-                        <div className="flex gap-4 pt-6">
-                            <Button
-                                size="large"
-                                color="primary"
-                                onClick={() => {}}
+                        {/* Search */}
+                        <div>
+                            <label
+                                htmlFor="search"
+                                className="block text-sm font-medium text-gray-700 mb-2"
                             >
+                                Pourquoi me prendre ? (mots-clés)
+                            </label>
+                            <input
+                                type="text"
+                                id="search"
+                                value={formData.search}
+                                onChange={handleChange}
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                                placeholder="Ex: calme, sportif, joueur"
+                            />
+                        </div>
+
+                        {/* Image */}
+                        <div>
+                            <label
+                                htmlFor="image"
+                                className="block text-sm font-medium text-gray-700 mb-2"
+                            >
+                                URL de l'image
+                            </label>
+                            <input
+                                type="text"
+                                id="image"
+                                value={formData.image}
+                                onChange={handleChange}
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                                placeholder="https://exemple.com/photo.jpg"
+                            />
+                        </div>
+
+                        {/* Prix */}
+                        <div>
+                            <label
+                                htmlFor="prix"
+                                className="block text-sm font-medium text-gray-700 mb-2"
+                            >
+                                Prix (€)
+                            </label>
+                            <input
+                                type="number"
+                                id="prix"
+                                value={formData.prix}
+                                onChange={handleChange}
+                                required
+                                className="w-full border border-gray-300 rounded-lg px-4 py-2"
+                                placeholder="Ex: 250"
+                            />
+                        </div>
+
+                        {/* Boutons */}
+                        <div className="flex gap-4 pt-6">
+                            <Button size="large" color="primary" type="submit">
                                 Ajouter cet humain
                             </Button>
-                            
-                            <Button
-                                size="large"
-                                color="transparent"
-                                href="/search"
-                            >
+
+                            <Button size="large" color="transparent" type="button" href="/search">
                                 Annuler
                             </Button>
                         </div>
@@ -205,3 +274,4 @@ export default function AddHuman() {
         </section>
     );
 }
+

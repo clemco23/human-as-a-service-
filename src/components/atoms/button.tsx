@@ -5,6 +5,7 @@ type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   color?: 'primary' | 'secondary' | 'transparent' | 'danger'| 'default' | 'black';
   href?: string;
+  type?: 'button' | 'submit' | 'reset';
   children: ReactNode;
   onClick?: () => void;
 };
@@ -31,6 +32,7 @@ export default function Button({
   color = 'black',
   href,
   children,
+  type,
   onClick,
 }: ButtonProps) {
   const baseClasses = `rounded-md font-medium transition ${sizeClasses[size]}`;
@@ -49,7 +51,7 @@ export default function Button({
   }
 
   return (
-    <button onClick={onClick} className={`${baseClasses} ${colorClasses[color]}`} type="button">
+    <button onClick={onClick} className={`${baseClasses} ${colorClasses[color]}`} type={type? type : "button"}>
       {children}
     </button>
   );
