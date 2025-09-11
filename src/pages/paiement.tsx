@@ -14,87 +14,80 @@ export default function Paiement() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg mt-6">
-      <h1 className="text-2xl font-bold mb-2 text-gray-800">Finaliser l'adoption</h1>
-      <p className="mb-6 text-gray-600">Dernière étape avant de rencontrer vos nouveaux compagnons</p>
+    <div className="max-w-3xl mx-auto p-10 bg-white rounded-3xl shadow-xl mt-12 mb-20">
+      <h1 className="text-3xl font-bold mb-3 text-gray-900 text-center">
+        Finaliser l'adoption
+      </h1>
+      <p className="mb-10 text-gray-500 text-center">
+        Dernière étape avant de rencontrer vos nouveaux compagnons
+      </p>
 
-      <form className="space-y-6" onSubmit={handleSubmit}>
+      <form className="space-y-10" onSubmit={handleSubmit}>
         {/* Informations personnelles */}
         <div className="space-y-4">
-          <h2 className="text-lg font-semibold text-gray-700">Informations personnelles</h2>
-          <input type="text" placeholder="Prénom" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <input type="text" placeholder="Nom" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <input type="email" placeholder="Votre email" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <input type="text" placeholder="Téléphone" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          <h2 className="text-xl font-semibold text-gray-800">Informations personnelles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" placeholder="Prénom" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+            <input type="text" placeholder="Nom" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+          </div>
+          <input type="email" placeholder="Email" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+          <input type="text" placeholder="Téléphone" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
         </div>
 
         {/* Adresse */}
         <div className="space-y-4">
-          <h2 className="text-lg font-semibold text-gray-700">Adresse</h2>
-          <input type="text" placeholder="Adresse" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <input type="text" placeholder="Ville" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-          <input type="text" placeholder="Code postal" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+          <h2 className="text-xl font-semibold text-gray-800">Adresse</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <input type="text" placeholder="Adresse" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+            <input type="text" placeholder="Ville" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+            <input type="text" placeholder="Code postal" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+          </div>
         </div>
 
         {/* Moyen de paiement */}
-        <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-gray-700">Moyen de paiement</h2>
-          <div className="flex items-center mb-2">
-            <input
-              id="radio-cb"
-              type="radio"
-              value="carte"
-              name="paiement"
+        <div className="space-y-3">
+          <h2 className="text-xl font-semibold text-gray-800">Moyen de paiement</h2>
+          <div className="flex items-center gap-4">
+            <input type="radio" id="radio-cb" value="carte" name="paiement"
               checked={moyenPaiement === "carte"}
               onChange={(e) => setMoyenPaiement(e.target.value)}
-              className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+              className="w-5 h-5 text-gray-700 border-gray-400 focus:ring-gray-400"
             />
-            <label htmlFor="radio-cb" className="ml-2 text-sm text-gray-900">Carte bancaire</label>
+            <label htmlFor="radio-cb" className="text-gray-700">Carte bancaire</label>
           </div>
-          <div className="flex items-center">
-            <input
-              id="radio-paypal"
-              type="radio"
-              value="paypal"
-              name="paiement"
+          <div className="flex items-center gap-4">
+            <input type="radio" id="radio-paypal" value="paypal" name="paiement"
               checked={moyenPaiement === "paypal"}
               onChange={(e) => setMoyenPaiement(e.target.value)}
-              className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+              className="w-5 h-5 text-gray-700 border-gray-400 focus:ring-gray-400"
             />
-            <label htmlFor="radio-paypal" className="ml-2 text-sm text-gray-900">PayPal</label>
+            <label htmlFor="radio-paypal" className="text-gray-700">PayPal</label>
           </div>
 
-          {/* Champs conditionnels Carte bancaire */}
           {moyenPaiement === "carte" && (
-            <div className="space-y-3 p-4 border rounded-lg bg-gray-50 mt-2">
-              <input type="text" placeholder="Numéro de carte" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-              <input type="text" placeholder="Date d'expiration (MM/AA)" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-red-500" />
-              <input type="text" placeholder="CVV" className="border p-2 w-full rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+            <div className="space-y-3 p-5 border rounded-xl bg-gray-50 mt-3">
+              <input type="text" placeholder="Numéro de carte" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+              <input type="text" placeholder="Date d'expiration (MM/AA)" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+              <input type="text" placeholder="CVV" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
             </div>
           )}
         </div>
 
         {/* Conditions */}
-        <div className="flex items-start">
-          <input
-            id="conditions"
-            type="checkbox"
-            checked={conditions}
-            onChange={(e) => setConditions(e.target.checked)}
-            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+        <div className="flex items-start gap-2">
+          <input type="checkbox" id="conditions" checked={conditions} onChange={(e) => setConditions(e.target.checked)}
+            className="w-5 h-5 text-gray-700 border-gray-300 rounded focus:ring-gray-400" 
           />
-          <label htmlFor="conditions" className="ml-2 text-sm text-gray-900">
+          <label htmlFor="conditions" className="text-gray-700 text-sm">
             J'accepte les conditions d'adoption et je m'engage à prendre soin de mes nouveaux compagnons
           </label>
         </div>
 
         {/* Bouton */}
-        <button
-          type="submit"
-          disabled={!conditions}
-          className="w-full bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 disabled:bg-gray-400 transition"
+        <button type="submit" disabled={!conditions}
+          className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-gray-800 disabled:bg-gray-300 transition"
         >
-          Valider
+          Valider l'adoption
         </button>
       </form>
     </div>
