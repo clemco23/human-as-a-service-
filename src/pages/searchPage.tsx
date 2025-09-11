@@ -85,7 +85,7 @@ export default function SearchPage() {
 
   return (
     <div>
-      <div className='text-center my-10'>
+      <div className='text-center my-10 mb-8'>
         <h1 className='text-3xl font-bold mb-4'>Nos humains en recherche</h1>
         <p className='text-xs text-gray-600'>Découvrez les adorables humains qui cherchent leur félin parfait</p>
         <div className="flex flex-row justify-center gap-6 mt-4 flex-wrap">
@@ -130,7 +130,7 @@ export default function SearchPage() {
       </div>
 
       {/* On passe addToCart à CardsPart */}
-  <CardsPart data={filteredData} />
+      <CardsPart data={filteredData} />
     </div>
   );
 }
