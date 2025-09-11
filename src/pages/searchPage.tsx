@@ -3,21 +3,45 @@ import CardsPart from '../components/organismes/cardsPart';
 import Button from '../components/atoms/button';
 import { db } from '../firebase-config';
 import { collection, getDocs } from "firebase/firestore";
-// import { useCart } from "../contexts/CartContext"; // supprimé car inutilisé
 
+// import { useCart } from "../contexts/CartContext"; // supprimé car inutilisé
+type Person = {
+  title: string;
+  genre: string;
+  size: number;
+  age: number;
+  personality: string;
+  description: string;
+  search: string;
+  image: string;
+  id: number ; 
+  prix: number;
+};
 export default function SearchPage() {
   const [ageRange, setAgeRange] = useState<string>("");
   const [personality, setPersonality] = useState<string>("");
   const [genre, setGenre] = useState<string>("");
 
-  const [Data, setData] = useState<unknown[]>([]);
-  // const { addToCart } = useCart(); // supprimé car inutilisé
+  const [Data, setData] = useState<Person[]>([]);
 
   useEffect(() => {
     const fetchHumans = async () => {
       try {
         const snapshot = await getDocs(collection(db, "products"));
-        const humans = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const humans = snapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: Number(doc.id),
+            genre: data.genre,
+            size: data.size,
+            age: data.age,
+            personality: data.personality,
+            description: data.description,
+            search: data.search,
+            image: data.image,
+            prix: data.prix,
+          } as Person;
+        });
         setData(humans);
       } catch (error) {
         console.error("Erreur récupération Firestore :", error);
