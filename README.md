@@ -84,5 +84,4 @@ Ce projet est sous licence **MIT** – vous êtes libre de l’utiliser et de le
 
 💡 *Human As a Service est un projet fun et créatif — aucune adoption d’humain réel n’est évidemment prévue 😉.*
 
-```
 
