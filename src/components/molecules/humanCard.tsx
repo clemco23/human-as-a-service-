@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCart } from "../../contexts/CartContext";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   image?: string;
@@ -29,6 +30,12 @@ export default function HumanCard({
   const [isMonthly, setIsMonthly] = useState(true);
   const { addToCart } = useCart();
     const [showModal, setShowModal] = useState(false);
+
+    const { t } = useTranslation();
+
+    const getTranslatedPersonality = (personality: string) => {
+      return t(`humanCard.personalities.${personality}`, personality);
+    };
 
   const handleAddToCart = () => {
     const item = {
@@ -62,12 +69,12 @@ export default function HumanCard({
       <h2 className="text-2xl font-bold text-gray-900 text-center">{title}</h2>
       <div className="my-4 flex flex-row items-center justify-center gap-4">
         <p className="text-gray-500 text-center mb-3">{genre} </p>
-        <p className="text-gray-500 text-center mb-3">{age} ans </p>
-        <p className="text-gray-500 text-center mb-3">{size} cm</p>
+        <p className="text-gray-500 text-center mb-3">{age} {t("humanCard.labels.years")} </p>
+        <p className="text-gray-500 text-center mb-3">{size} {t("humanCard.labels.cm")}</p>
       </div>
 
       <p className="mb-4 rounded-full bg-red-100 px-4 py-1 text-sm font-medium text-red-700 border border-red-200 inline-block">
-        {personality}
+        {getTranslatedPersonality(personality)}
       </p>
 
       <p className="text-gray-700 text-sm leading-relaxed mb-4 text-center">
@@ -75,14 +82,14 @@ export default function HumanCard({
       </p>
 
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-        <h3 className="text-md font-semibold text-gray-800 mb-2">Pourquoi me prendre :</h3>
+        <h3 className="text-md font-semibold text-gray-800 mb-2">{t("humanCard.labels.whyTakeMe")}</h3>
         <p className="text-gray-600 text-sm leading-snug">{search}</p>
       </div>
 
       {/* Toggle abonnement/achat unique */}
       <div className="flex items-center justify-center gap-3 mt-4">
         <span className={`text-sm ${isMonthly ? "text-gray-900 font-medium" : "text-gray-400"}`}>
-          Par mois
+          {t("humanCard.labels.perMonth")}
         </span>
         <button
           onClick={() => setIsMonthly(!isMonthly)}
@@ -97,7 +104,7 @@ export default function HumanCard({
           />
         </button>
         <span className={`text-sm ${!isMonthly ? "text-gray-900 font-medium" : "text-gray-400"}`}>
-          Achat unique
+          {t("humanCard.labels.oneTime")}
         </span>
       </div>
 
@@ -107,7 +114,7 @@ export default function HumanCard({
           {!isMonthly ? prix * 12 : prix} €
         </span>
         <span className="text-sm text-gray-500">
-          {isMonthly ? " / mois" : " en une fois"}
+          {isMonthly ? t("humanCard.IsMonthly.month") : t("humanCard.IsMonthly.year")}
         </span>
       </div>
 
@@ -115,18 +122,18 @@ export default function HumanCard({
       <div className="mt-6 text-center">
         <button
           onClick={handleAddToCart}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300"
+          className="w-full bg-[#ff6b6b] hover:bg-[#ff5252] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300"
         >
-          Ajouter au panier
+          {t("humanCard.labels.addToCart")}
         </button>
       </div>
         {/* Modal */}
       {showModal && (
         <div className="fixed  top-4 right-4 bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full text-center animate-fadeIn">
-            <h2 className="text-xl font-bold mb-2 text-red-600">Ajouté au panier 🛒</h2>
+            <h2 className="text-xl font-bold mb-2 text-red-600">{t("humanCard.labels.addedToCart")}</h2>
             <p className="text-gray-600 mb-4">
-              {title} a été ajouté au panier ! <br />
+              {title} {t("humanCard.labels.addedToCart")} ! <br />
               ({isMonthly ? `${prix}€ / mois` : `${prix * 12}€ en une fois`})
             </p>
           </div>

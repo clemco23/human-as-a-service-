@@ -110,6 +110,28 @@
       "addHuman": {
         "title": "+ miaoumiaoumiaou un miaou"
       }
+    },
+    "humanCard": {
+      "personalities": {
+        "Calme": "Miaou",
+        "Aventureux": "Miaoumiaou",
+        "Familial": "Miaoumiaoumiaou", 
+        "Sportif": "Miaoumiaoumiaoumiaou",
+        "Travailleur": "Miaoumiaou"
+      },
+      "labels": {
+        "whyTakeMe": "Miaou me miaou :",
+        "perMonth": "Miaou miaou",
+        "oneTime": "Miaou miaouique",
+        "addToCart": "Miaoumiaouer au miaou",
+        "addedToCart": "Miaoué au miaou 🛒",
+        "years": "miaous",
+        "cm": "miaou"
+      },
+      "IsMonthly": {
+        "month": "Miaou",
+        "year": "Miaou miaou miaou"
+      }
     }
 }
 

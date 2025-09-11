@@ -110,5 +110,27 @@
       "addHuman": {
         "title": "+ Ajouter un humain"
       }
+    },
+    "humanCard": {
+      "personalities": {
+        "Calme": "Calme",
+        "Aventureux": "Aventureux", 
+        "Familial": "Familial",
+        "Sportif": "Sportif",
+        "Travailleur": "Travailleur"
+      },
+      "labels": {
+        "whyTakeMe": "Pourquoi me prendre :",
+        "perMonth": "Par mois",
+        "oneTime": "Achat unique",
+        "addToCart": "Ajouter au panier",
+        "addedToCart": "Ajouté au panier 🛒",
+        "years": "ans",
+        "cm": "cm"
+      },
+      "IsMonthly": {
+        "month": "/ mois",
+        "year": "en une fois"
+      }
     }
 }

@@ -114,14 +114,14 @@ export default function Header() {
             <div className="flex space-x-2">
               <button
                 onClick={() => switchLanguage("fr")}
-                className="p-2 border rounded flex items-center justify-center"
+                className="p-2 rounded flex items-center justify-center hover:bg-gray-100 transition"
                 title="Français"
               >
                 <FaHandPaper className="text-xl" />
               </button>
               <button
                 onClick={() => switchLanguage("en")}
-                className="p-2 border rounded flex items-center justify-center"
+                className="p-2 rounded flex items-center justify-center hover:bg-gray-100 transition"
                 title="Miaou"
               >
                 <FaPaw className="text-xl" />
