@@ -3,7 +3,7 @@ import CardsPart from '../components/organismes/cardsPart';
 import Button from '../components/atoms/button';
 import { db } from '../firebase-config';
 import { collection, getDocs } from "firebase/firestore";
-
+import { useTranslation } from "react-i18next";
 // import { useCart } from "../contexts/CartContext"; // supprimé car inutilisé
 type Person = {
   title: string;
@@ -21,6 +21,8 @@ export default function SearchPage() {
   const [ageRange, setAgeRange] = useState<string>("");
   const [personality, setPersonality] = useState<string>("");
   const [genre, setGenre] = useState<string>("");
+  const { t } = useTranslation();
+
 
   const [Data, setData] = useState<Person[]>([]);
 
@@ -86,45 +88,45 @@ export default function SearchPage() {
   return (
     <div>
       <div className='text-center my-10 mb-8'>
-        <h1 className='text-3xl font-bold mb-4'>Nos humains en recherche</h1>
-        <p className='text-xs text-gray-600'>Découvrez les adorables humains qui cherchent leur félin parfait</p>
+        <h1 className='text-3xl font-bold mb-4'>{t("searchPage.title")}</h1>
+        <p className='text-xs text-gray-600'>{t("searchPage.subtitle")}</p>
         <div className="flex flex-row justify-center gap-6 mt-4 flex-wrap">
 
           <div className="mt-6">
-            <label className="mr-2 text-sm font-medium text-gray-700">Tranches d'âges:</label>
+            <label className="mr-2 text-sm font-medium text-gray-700">{t("searchPage.age.title")}</label>
             <select value={ageRange} onChange={e => setAgeRange(e.target.value)} className="border rounded px-4 py-2 text-sm">
-              <option value="">Toutes les tranches</option>
-              <option value="10-20">10-20 ans</option>
-              <option value="20-30">20-30 ans</option>
-              <option value="30-50">30-50 ans</option>
-              <option value="50-60">50-60 ans</option>
-              <option value="60+">60 ans et plus</option>
+              <option value="">{t("searchPage.age.subtitle")}</option>
+              <option value="10-20">{t("searchPage.age.options1")}</option>
+              <option value="20-30">{t("searchPage.age.options2")}</option>
+              <option value="30-50">{t("searchPage.age.options3")}</option>
+              <option value="50-60">{t("searchPage.age.options4")}</option>
+              <option value="60+">{t("searchPage.age.options5")}</option>
             </select>
           </div>
 
           <div className="mt-6">
-            <label className="mr-2 text-sm font-medium text-gray-700">Personnalité:</label>
+            <label className="mr-2 text-sm font-medium text-gray-700">{t("searchPage.personality.title")}</label>
             <select value={personality} onChange={e => setPersonality(e.target.value)} className="border rounded px-4 py-2 text-sm">
-              <option value="">Toutes les personnalités</option>
-              <option value="Calme">Calme</option>
-              <option value="Aventureux">Aventureux</option>
-              <option value="Familial">Familial</option>
-              <option value="Sportif">Sportif</option>
-              <option value="Travailleur">Travailleur</option>
+              <option value="">{t("searchPage.personality.subtitle")}</option>
+              <option value="Calme">{t("searchPage.personality.options1")}</option>
+              <option value="Aventureux">{t("searchPage.personality.options2")}</option>
+              <option value="Familial">{t("searchPage.personality.options3")}</option>
+              <option value="Sportif">{t("searchPage.personality.options4")}</option>
+              <option value="Travailleur">{t("searchPage.personality.options5")}</option>
             </select>
           </div>
 
           <div className="mt-6">
-            <label className="mr-2 text-sm font-medium text-gray-700">Genre :</label>
+            <label className="mr-2 text-sm font-medium text-gray-700">{t("searchPage.gender.title")}</label>
             <select value={genre} onChange={e => setGenre(e.target.value)} className="border rounded px-4 py-2 text-sm">
-              <option value="">Pas de préférence</option>
-              <option value="M">Homme</option>
-              <option value="F">Femme</option>
+              <option value="">{t("searchPage.gender.options1")}</option>
+              <option value="M">{t("searchPage.gender.options2")}</option>
+              <option value="F">{t("searchPage.gender.options3")}</option>
             </select>
           </div>
 
           <div className="mt-8">
-            <Button size="medium" color="primary" href="/add-human">+ Ajouter un humain</Button>
+            <Button size="medium" color="primary" href="/add-human">{t("searchPage.addHuman.title")}</Button>
           </div>
         </div>
       </div>

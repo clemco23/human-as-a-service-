@@ -39,7 +39,17 @@
       "navConnect": "Connexion"
     },
     "footer": {
-      
+      "title" : "PawMatch",
+      "subtitle": "Où les chats choisissent leurs humains",
+      "linkTitle": "Liens rapides",
+      "linkDescription": {
+        "navHome": "Accueil",
+        "navCats": " Humain disponible",
+        "navAbout": " À propos",
+        "navContact": "Contact"
+      },
+      "followLinkTitle": "Suivez-nous",
+      "copyright": "PawMatch. Tous droits réservés."
     },
 
   "contact": {
@@ -68,5 +78,37 @@
       "description": "Créer des liens durables entre les chats et les humains en permettant aux félins d'exprimer leurs préférences et de choisir leur famille d'adoption."
     },
     "content": "Chaque chat de notre plateforme a développé ses propres critères de sélection, basés sur son caractère unique, ses besoins spécifiques et ses préférences de style de vie."
-  }
+  },
+
+  "searchPage": {
+      "title": "Nos humains en recherche",
+      "subtitle": "Découvrez les adorables humains qui cherchent leur félin parfait",
+      "age": {
+        "title": "Tranches d'âge",
+        "subtitle": "Toutes les tranches",
+        "options1": "10-20 ans",
+        "options2": "20-30 ans",
+        "options3": "30-50 ans",
+        "options4": "50-60 ans",
+        "options5": "60 ans et plus"
+      },
+      "personality": {
+        "title": "Personnalité",
+        "subtitle": "Toutes les personnalités",
+        "options1": "Calme",
+        "options2": "Aventureux",
+        "options3": "Familial",
+        "options4": "Sportif",
+        "options5": "Travailleur"
+      },
+      "gender": {
+        "title": "Genre :",
+        "options1": "Pas de préférence",
+        "options2": "Homme",
+        "options3": "Femme"
+      },
+      "addHuman": {
+        "title": "+ Ajouter un humain"
+      }
+    }
 }

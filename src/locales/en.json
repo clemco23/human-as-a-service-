@@ -39,11 +39,17 @@
     },
 
     "footer": {
-      "title": "Miaouuu Miaou",
-      "subtitle": "Miaou miaaouu miaouuu miaou",
-      "description": "Miaou miaaouuu miaou, miaou miaaouu miaouuu miaaouu. Miaou miaouu miaaouuu miaou!",
-      "team": "Miaaouu",
-      "buttonLearnMore": "Miaouuu"
+      "title" : "PawMatch",
+      "subtitle": "Où les miaou choisissent leurs miaoumiaou ",
+      "linkTitle": "miaou  miaouides",
+      "linkDescription": {
+        "navHome": "Miaou",
+        "navCats": " Miaou miaounible",
+        "navAbout": " Miaouu",
+        "navContact": "Miaouuu"
+      },
+      "followLinkTitle": "miaouiez-nous",
+      "copyright": "PawMatch. Tous miaou miaouvés."
     },
     
     "contact": {
@@ -72,5 +78,38 @@
         "description": "miaou des miaous durables entre les miaous miau miaus humains miau permettant aux miaus de miaou miau miau miau et de miaur leur famille miau d'miau."
       },  
       "content": "Chaque miaou de notre miau a miau ses miau miaumiaumiau de miaumiau, miau sur son miaumiau unique, ses miaus spécifiques et ses miaus miaumiaumiau miau."
+    },
+
+   "searchPage": {
+      "title": "Nos miaou en miaoumiaoumiaou",
+      "subtitle": "miaourez les miaoumiaoubles miaou qui miaoumiaoumiaoumiaoumiaou leur miaou parfait",
+      "age": {
+        "title": "Tmiaou d'miaou",
+        "subtitle": "miaou les miaoumiaou",
+        "options1": "10-20 miaous",
+        "options2": "20-30 miaous",
+        "options3": "30-50 miaous",
+        "options4": "50-60 miaous",
+        "options5": "60 miaous et plus"
+      },
+      "personality": {
+        "title": "miaouité",
+        "subtitle": "miaoumiaou les miaoumiaou",
+        "options1": "miaou",
+        "options2": "miaoumiaou",
+        "options3": "miaoumiaoumiaou",
+        "options4": "miaoumiaoumiaoumiaoumiaou",
+        "options5": "miaoumiaou"
+      },
+      "gender": {
+        "title": "miaoure :",
+        "options1": "Pas de miaouérence",
+        "options2": "Miaou",
+        "options3": "Miaoumiaou"
+      },
+      "addHuman": {
+        "title": "+ miaoumiaoumiaou un miaou"
+      }
     }
 }
+
