@@ -10,7 +10,7 @@ export default function Paiement() {
       alert("Vous devez accepter les conditions d'adoption avant de continuer.");
       return;
     }
-    console.log("Formulaire soumis !");
+    alert("Paiement effectué avec succès ! Mais transaction non validée :D (en gros tu t'es fait baiser par l'admin).");
   };
 
   return (
@@ -93,3 +93,4 @@ export default function Paiement() {
     </div>
   );
 }
+
