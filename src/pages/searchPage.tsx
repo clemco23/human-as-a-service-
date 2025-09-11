@@ -35,6 +35,7 @@ export default function SearchPage() {
           return {
             id: Number(doc.id),
             genre: data.genre,
+            title: data.title,
             size: data.size,
             age: data.age,
             personality: data.personality,

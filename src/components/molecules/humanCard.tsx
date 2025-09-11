@@ -133,7 +133,6 @@ export default function HumanCard({
         </div>
       )}
     </div>
-
-    
   );
 }
+
