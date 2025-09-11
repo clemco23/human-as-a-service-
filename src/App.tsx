@@ -13,6 +13,7 @@ import ConnectPage from './pages/connect';
 import RegisterPage from './pages/register';
 import AddHuman from './pages/addHuman';
 import Cart from './pages/cart';
+import Paiement from "./pages/paiement";
 
 function AppRouter() {
   return (
@@ -30,6 +31,7 @@ function AppRouter() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/add-human" element={<AddHuman />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/payment" element={<Paiement />} />
             </Routes>
           </main>
           <Footer />
