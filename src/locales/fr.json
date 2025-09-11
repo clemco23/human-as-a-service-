@@ -134,6 +134,59 @@
       }
     },
 
+    "cart": {
+      "title": "🛒 Votre panier",
+      "empty": "Votre panier est vide.",
+      "summary": {
+        "title": "Résumé",
+        "monthlySubscriptions": "Abonnements mensuels",
+        "oneTimePurchase": "Achat unique",
+        "total": "Total"
+      },
+      "checkout": "Passer au paiement"
+    },
+
+    "login": {
+      "title": "Accès à votre chatière",
+      "subtitle": "Ouvrez votre chatière pour trouver votre humain parfait",
+      "form": {
+        "email": "Catmail",
+        "password": "Clé de chatière",
+        "remember": "Garder ma chatière ouverte",
+        "forgotPassword": "J'ai perdu les clés de ma chatière",
+        "submit": "Ouvrir ma chatière",
+        "loading": "Ouverture en cours...",
+        "createAccount": "Créer une chatière"
+      },
+      "error": "Catmail ou clé incorrecte 🐾",
+      "benefits": {
+        "title": "Pourquoi créer une chatière ?",
+        "items": [
+          "🐾 Créer votre profil d'humain unique",
+          "🏠 Recevoir vos profils d'humains favoris",
+          "💝 Sauvegarder vos humains préférés",
+          "🎯 Communiquer avec vos humains",
+          "📱 Accéder à tous nos services félins"
+        ]
+      }
+    },
+
+    "register": {
+      "title": "Créer votre chatière",
+      "subtitle": "Inscrivez-vous pour rejoindre la communauté féline",
+      "form": {
+        "name": "Nom de chatière",
+        "email": "Catmail",
+        "password": "Clé de chatière",
+        "confirmPassword": "Confirmez la clé",
+        "submit": "Créer ma chatière",
+        "loading": "Création en cours..."
+      },
+      "error": {
+        "passwordMismatch": "Les clés ne correspondent pas 🐾"
+      }
+    },
+
     "addHuman": {
       "title": "Ajouter un nouvel humain",
       "subtitle": "Aidez un humain à trouver son chat parfait en remplissant ce formulaire",

@@ -134,6 +134,59 @@
       }
     },
 
+    "cart": {
+      "title": "🛒 Miaou miaou",
+      "empty": "Miaou miaou miaou miaou.",
+      "summary": {
+        "title": "Miaou",
+        "monthlySubscriptions": "Miaou miaoumiaou",
+        "oneTimePurchase": "Miaou miaouique",
+        "total": "Miaou"
+      },
+      "checkout": "Miaou au miaou"
+    },
+
+    "login": {
+      "title": "Miaou à miaou miaou",
+      "subtitle": "Miaou miaou miaou miaou miaou miaou miaou parfait",
+      "form": {
+        "email": "Miaoumail",
+        "password": "Miaou de miaou",
+        "remember": "Miaou ma miaou miaou",
+        "forgotPassword": "Miaou miaou les miaous de ma miaou",
+        "submit": "Miaou ma miaou",
+        "loading": "Miaou en miaou...",
+        "createAccount": "Miaou une miaou"
+      },
+      "error": "Miaoumail ou miaou miaou 🐾",
+      "benefits": {
+        "title": "Miaou miaou une miaou ?",
+        "items": [
+          "🐾 Miaou miaou miaou d'miaou miaou",
+          "🏠 Miaou miaou miaous d'miaous miaous",
+          "💝 Miaou miaou miaous miaous",
+          "🎯 Miaou avec miaou miaous",
+          "📱 Miaou à miaou nos miaous miaous"
+        ]
+      }
+    },
+
+    "register": {
+      "title": "Miaou miaou miaou",
+      "subtitle": "Miaou-miaou miaou miaou la miaou miaou",
+      "form": {
+        "name": "Miaou de miaou",
+        "email": "Miaoumail",
+        "password": "Miaou de miaou",
+        "confirmPassword": "Miaou la miaou",
+        "submit": "Miaou ma miaou",
+        "loading": "Miaou en miaou..."
+      },
+      "error": {
+        "passwordMismatch": "Les miaous ne miaou pas 🐾"
+      }
+    },
+
     "addHuman": {
       "title": "Miaou un miaou miaou",
       "subtitle": "Miaou un miaou à miaou son miaou parfait en miaou ce miaou",
