@@ -171,6 +171,125 @@ export default function Header() {
             </button>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen 
+            ? 'max-h-screen opacity-100 visible' 
+            : 'max-h-0 opacity-0 invisible overflow-hidden'
+        }`}>
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg">
+            {/* Navigation Links */}
+            <div className="space-y-2">
+              <Button 
+                color="black" 
+                size="medium" 
+                href="/"
+                className="block w-full text-left px-3 py-2 rounded-md hover:bg-gray-50 transition-colors duration-200"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("header.navHome")}
+              </Button>
+              <Button 
+                color="black" 
+                size="medium" 
+                href="/search"
+                className="block w-full text-left px-3 py-2 rounded-md hover:bg-gray-50 transition-colors duration-200"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("header.navCats")}
+              </Button>
+              <Button 
+                color="black" 
+                size="medium" 
+                href="/about"
+                className="block w-full text-left px-3 py-2 rounded-md hover:bg-gray-50 transition-colors duration-200"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("header.navAbout")}
+              </Button>
+              <Button 
+                color="black" 
+                size="medium" 
+                href="/contact"
+                className="block w-full text-left px-3 py-2 rounded-md hover:bg-gray-50 transition-colors duration-200"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("header.navContact")}
+              </Button>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-gray-200 my-3"></div>
+
+            {/* User Section */}
+            <div className="space-y-3">
+              {user ? (
+                <>
+                  <div className="px-3 py-2 text-sm text-gray-700 bg-gray-50 rounded-md">
+                    {t("header.navWelcome")} {displayName || user.email}
+                  </div>
+                  
+                  {/* Cart Button */}
+                  <a
+                    href="/cart"
+                    className="flex items-center px-3 py-2 rounded-md hover:bg-red-50 transition-colors duration-200"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <FaShoppingCart className="text-red-500 mr-3" />
+                    <span className="text-gray-900">Panier</span>
+                  </a>
+
+                  {/* Logout Button */}
+                  <button
+                    onClick={() => {
+                      signOut(auth);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full text-left px-3 py-2 bg-red-400 text-white rounded-md hover:bg-red-600 transition-colors duration-200"
+                  >
+                    {t("header.navLogout")}
+                  </button>
+                </>
+              ) : (
+                <Button 
+                  size="medium" 
+                  href="/connect"
+                  className="block w-full text-center px-3 py-2 bg-red-400 text-white rounded-md hover:bg-red-600 transition-colors duration-200"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t("header.navConnect")}
+                </Button>
+              )}
+
+              {/* Language Buttons */}
+              <div className="flex space-x-2 px-3">
+                <button
+                  onClick={() => {
+                    switchLanguage("fr");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex-1 p-3 rounded-md flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 border border-gray-200"
+                  title="Français"
+                >
+                  <FaHandPaper className="text-xl mr-2" />
+                  <span className="text-sm">FR</span>
+                </button>
+                <button
+                  onClick={() => {
+                    switchLanguage("en");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex-1 p-3 rounded-md flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 border border-gray-200"
+                  title="Miaou"
+                >
+                  <FaPaw className="text-xl mr-2" />
+                  <span className="text-sm">EN</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );

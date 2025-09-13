@@ -8,6 +8,7 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
   children: ReactNode;
   onClick?: () => void;
+  className?: string;
 };
 
 const sizeClasses = {
@@ -34,15 +35,22 @@ export default function Button({
   children,
   type,
   onClick,
+  className,
 }: ButtonProps) {
   const baseClasses = `rounded-md font-medium transition ${sizeClasses[size]}`;
+  const finalClasses = className ? `${baseClasses} ${className}` : `${baseClasses} ${colorClasses[color]}`;
 
   if (href) {
     return (
       <NavLink
         to={href}
+        onClick={onClick}
         className={({ isActive }) =>
-          isActive ? `${baseClasses} ${activeClass}` : `${baseClasses} ${colorClasses[color]}`
+          className 
+            ? `${baseClasses} ${className}` 
+            : isActive 
+              ? `${baseClasses} ${activeClass}` 
+              : `${baseClasses} ${colorClasses[color]}`
         }
       >
         {children}
@@ -51,7 +59,7 @@ export default function Button({
   }
 
   return (
-    <button onClick={onClick} className={`${baseClasses} ${colorClasses[color]}`} type={type? type : "button"}>
+    <button onClick={onClick} className={finalClasses} type={type? type : "button"}>
       {children}
     </button>
   );
