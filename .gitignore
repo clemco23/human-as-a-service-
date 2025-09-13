@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 .env
+.env.example
+README-DEPLOYMENT.md
 
 public/picture/
 
