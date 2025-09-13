@@ -28,18 +28,22 @@ export default function HumanCard({
   prix,
 }: Props) {
   const [isMonthly, setIsMonthly] = useState(true);
-  const { addToCart } = useCart();
-    const [showModal, setShowModal] = useState(false);
+  const { addToCart, isInCart } = useCart();
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalType, setModalType] = useState<"success" | "error">("success");
 
-    const { t } = useTranslation();
+  const { t } = useTranslation();
+  const itemId = String(id);
+  const isAlreadyInCart = isInCart(itemId, title);
 
-    const getTranslatedPersonality = (personality: string) => {
-      return t(`humanCard.personalities.${personality}`, personality);
-    };
+  const getTranslatedPersonality = (personality: string) => {
+    return t(`humanCard.personalities.${personality}`, personality);
+  };
 
   const handleAddToCart = () => {
     const item = {
-      id: String(id),
+      id: itemId,
       title,
       image: image || "",
       age,
@@ -51,11 +55,16 @@ export default function HumanCard({
       price: isMonthly ? prix : prix * 12,
       isMonthly,
     };
-    addToCart(item);
-     setShowModal(true); 
-      setTimeout(() => {
+    
+    const result = addToCart(item);
+    
+    setModalMessage(result.message);
+    setModalType(result.success ? "success" : "error");
+    setShowModal(true);
+    
+    setTimeout(() => {
       setShowModal(false);
-    }, 1500);
+    }, 2000);
   };
 
   return (
@@ -122,24 +131,38 @@ export default function HumanCard({
       <div className="mt-6 text-center">
         <button
           onClick={handleAddToCart}
-          className="w-full bg-[#ff6b6b] hover:bg-[#ff5252] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300"
+          disabled={isAlreadyInCart}
+          className={`w-full font-semibold py-2 px-4 rounded-lg transition-colors duration-300 ${
+            isAlreadyInCart
+              ? "bg-gray-400 text-gray-200 cursor-not-allowed"
+              : "bg-[#ff6b6b] hover:bg-[#ff5252] text-white"
+          }`}
         >
-          {t("humanCard.labels.addToCart")}
+          {isAlreadyInCart 
+            ? t("humanCard.labels.alreadyInCart", "Déjà dans le panier")
+            : t("humanCard.labels.addToCart")
+          }
         </button>
       </div>
         {/* Modal */}
       {showModal && (
-        <div className="fixed  top-4 right-4 bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full text-center animate-fadeIn">
-            <h2 className="text-xl font-bold mb-2 text-red-600">{t("humanCard.labels.addedToCart")}</h2>
-            <p className="text-gray-600 mb-4">
-              {title} {t("humanCard.labels.addedToCart")} ! <br />
-              ({isMonthly ? `${prix}€ / mois` : `${prix * 12}€ en une fois`})
-            </p>
+        <div className="fixed top-4 right-4 z-50">
+          <div className={`bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full text-center animate-fadeIn border-l-4 ${
+            modalType === "success" ? "border-green-500" : "border-red-500"
+          }`}>
+            <h2 className={`text-xl font-bold mb-2 ${
+              modalType === "success" ? "text-green-600" : "text-red-600"
+            }`}>
+              {modalType === "success" ? "✓" : "⚠"} {modalMessage}
+            </h2>
+            {modalType === "success" && (
+              <p className="text-gray-600 mb-4">
+                {title} - {isMonthly ? `${prix}€ / mois` : `${prix * 12}€ en une fois`}
+              </p>
+            )}
           </div>
         </div>
       )}
     </div>
   );
 }
-

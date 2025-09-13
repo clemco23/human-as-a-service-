@@ -3,22 +3,15 @@ import CartItem from "../components/molecules/cartItem";
 import { useTranslation } from "react-i18next";
 
 export default function Cart() {
-  const { cartItems } = useCart();
+  const { cartItems, getTotalPrice } = useCart();
   const { t } = useTranslation();
 
   const handleCheckout = () => {
     window.location.href = "/payment";
   };
 
-  // Calcul des totaux
-
-  const monthlyTotal = cartItems
-    .filter((item) => item.isMonthly)
-    .reduce((sum, item) => sum + item.price, 0);
-
-  const oneTimeTotal = cartItems
-    .filter((item) => !item.isMonthly)
-    .reduce((sum, item) => sum + item.price, 0);
+  // Calcul des totaux avec les nouvelles fonctions
+  const { monthly: monthlyTotal, oneTime: oneTimeTotal } = getTotalPrice();
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -32,8 +25,8 @@ export default function Cart() {
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Articles */}
         <div className="flex-1 bg-white rounded-2xl shadow p-4">
-          {cartItems.map((item) => (
-              <CartItem key={item.id} {...item} />
+          {cartItems.map((item, index) => (
+              <CartItem key={`${item.id}-${item.title}-${index}`} {...item} />
           ))}
         </div>
 

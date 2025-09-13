@@ -40,13 +40,14 @@ export default function CartItem({
       </div>
       <div className="flex flex-col items-end gap-2">
         <span className="text-lg font-bold text-gray-800">
-          {price } €
+          {price} €
         </span>
         <span className="text-sm text-gray-500">
           {isMonthly ? "par mois" : "en une fois"}
         </span>
+        
         <button
-          onClick={() => removeFromCart(id)}
+          onClick={() => removeFromCart(id, title)}
           className="mt-2 px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs rounded-lg"
         >
           Supprimer

@@ -14,12 +14,14 @@ type CartHumanItem = {
 
 type CartContextType = {
   cartItems: CartHumanItem[];
-  addToCart: (item: CartHumanItem) => void;
-  removeFromCart: (id: string) => void;
+  addToCart: (item: CartHumanItem) => { success: boolean; message: string };
+  removeFromCart: (id: string, title?: string) => void;
+  clearCart: () => void;
+  getTotalPrice: () => { monthly: number; oneTime: number };
+  isInCart: (id: string, title?: string) => boolean;
 };
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
@@ -34,15 +36,76 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   }, [cartItems]);
 
   const addToCart = (item: CartHumanItem) => {
-    setCartItems(prev => [...prev, item]);
+    // Vérification plus précise : même ID ET même titre pour éviter les conflits
+    const existingItem = cartItems.find(cartItem => 
+      cartItem.id === item.id && cartItem.title === item.title
+    );
+    
+    if (existingItem) {
+      return {
+        success: false,
+        message: "Cet article est déjà dans votre panier"
+      };
+    }
+    
+    setCartItems(prev => [...prev, { ...item, quantity: 1 }]);
+    return {
+      success: true,
+      message: "Article ajouté au panier avec succès"
+    };
   };
 
-  const removeFromCart = (id: string) => {
-    setCartItems(prev => prev.filter(item => item.id !== id));
+  const removeFromCart = (id: string, title?: string) => {
+    setCartItems(prev => {
+      if (title) {
+        // Suppression précise avec ID et titre
+        const newItems = prev.filter(item => !(item.id === id && item.title === title));
+        console.log('Suppression avec titre:', { id, title, avant: prev.length, après: newItems.length });
+        return newItems;
+      }
+      // Suppression par ID seulement (fallback)
+      const newItems = prev.filter(item => item.id !== id);
+      console.log('Suppression par ID:', { id, avant: prev.length, après: newItems.length });
+      return newItems;
+    });
+  };
+
+  const isInCart = (id: string, title?: string) => {
+    if (title) {
+      // Vérification avec ID et titre pour plus de précision
+      return cartItems.some(item => item.id === id && item.title === title);
+    }
+    return cartItems.some(item => item.id === id);
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  const getTotalPrice = () => {
+    return cartItems.reduce(
+      (totals, item) => {
+        const itemTotal = item.price * (item.quantity || 1);
+        if (item.isMonthly) {
+          totals.monthly += itemTotal;
+        } else {
+          totals.oneTime += itemTotal;
+        }
+        return totals;
+      },
+      { monthly: 0, oneTime: 0 }
+    );
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ 
+      cartItems, 
+      addToCart, 
+      removeFromCart, 
+      clearCart, 
+      getTotalPrice,
+      isInCart 
+    }}>
       {children}
     </CartContext.Provider>
   );

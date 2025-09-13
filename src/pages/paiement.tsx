@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useCart } from "../contexts/CartContext";
+import StripeCheckout from "../components/molecules/StripeCheckout";
 
 export default function Paiement() {
-  const [moyenPaiement, setMoyenPaiement] = useState("paypal");
+  const [moyenPaiement, setMoyenPaiement] = useState("stripe");
   const [conditions, setConditions] = useState(false);
+  const { cartItems, getTotalPrice, clearCart } = useCart();
+  
+  const { monthly: monthlyTotal, oneTime: oneTimeTotal } = getTotalPrice();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -10,17 +15,70 @@ export default function Paiement() {
       alert("Vous devez accepter les conditions d'adoption avant de continuer.");
       return;
     }
-    alert("Paiement effectué avec succès ! Mais transaction non validée :D (en gros tu t'es fait baiser par l'admin).");
+    
+    if (cartItems.length === 0) {
+      alert("Votre panier est vide !");
+      return;
+    }
+    
+    if (moyenPaiement === "paypal") {
+      // Simulation PayPal
+      alert(`Paiement PayPal de ${monthlyTotal > 0 ? monthlyTotal + '€/mois' : ''} ${oneTimeTotal > 0 ? '+ ' + oneTimeTotal + '€' : ''} effectué avec succès !`);
+      clearCart();
+      window.location.href = "/";
+    }
+  };
+
+  const handleStripeSuccess = () => {
+    alert(`Paiement Stripe de ${monthlyTotal > 0 ? monthlyTotal + '€/mois' : ''} ${oneTimeTotal > 0 ? '+ ' + oneTimeTotal + '€' : ''} effectué avec succès !`);
+    clearCart();
+    window.location.href = "/";
+  };
+
+  const handleStripeError = (error: string) => {
+    alert(`Erreur de paiement: ${error}`);
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-10 bg-white rounded-3xl shadow-xl mt-12 mb-20">
+    <div className="max-w-4xl mx-auto p-10 bg-white rounded-3xl shadow-xl mt-12 mb-20">
       <h1 className="text-3xl font-bold mb-3 text-gray-900 text-center">
         Finaliser l'adoption
       </h1>
-      <p className="mb-10 text-gray-500 text-center">
+      <p className="mb-6 text-gray-500 text-center">
         Dernière étape avant de rencontrer vos nouveaux compagnons
       </p>
+      
+      {/* Résumé du panier */}
+      <div className="bg-gray-50 rounded-xl p-6 mb-8">
+        <h2 className="text-xl font-semibold mb-4">Résumé de votre commande</h2>
+        {cartItems.length === 0 ? (
+          <p className="text-gray-600">Votre panier est vide</p>
+        ) : (
+          <div className="space-y-3">
+            {cartItems.map((item, index) => (
+              <div key={`${item.id}-${item.title}-${index}`} className="flex justify-between items-center border-b pb-2">
+                <div>
+                  <span className="font-medium">{item.title}</span>
+                  <span className="text-sm text-gray-500 ml-2">({item.age} ans, {item.genre})</span>
+                </div>
+                <span className="font-semibold">
+                  {item.price}€ {item.isMonthly ? "/mois" : ""}
+                </span>
+              </div>
+            ))}
+            <div className="pt-4 border-t">
+              <div className="flex justify-between text-lg font-bold">
+                <span>Total:</span>
+                <span>
+                  {monthlyTotal > 0 && `${monthlyTotal}€/mois`}
+                  {monthlyTotal > 0 && oneTimeTotal > 0 && " + "}
+                  {oneTimeTotal > 0 && `${oneTimeTotal}€`}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
 
       <form className="space-y-10" onSubmit={handleSubmit}>
         {/* Informations personnelles */}
@@ -48,12 +106,12 @@ export default function Paiement() {
         <div className="space-y-3">
           <h2 className="text-xl font-semibold text-gray-800">Moyen de paiement</h2>
           <div className="flex items-center gap-4">
-            <input type="radio" id="radio-cb" value="carte" name="paiement"
-              checked={moyenPaiement === "carte"}
+            <input type="radio" id="radio-stripe" value="stripe" name="paiement"
+              checked={moyenPaiement === "stripe"}
               onChange={(e) => setMoyenPaiement(e.target.value)}
               className="w-5 h-5 text-gray-700 border-gray-400 focus:ring-gray-400"
             />
-            <label htmlFor="radio-cb" className="text-gray-700">Carte bancaire</label>
+            <label htmlFor="radio-stripe" className="text-gray-700">Stripe (Carte bancaire)</label>
           </div>
           <div className="flex items-center gap-4">
             <input type="radio" id="radio-paypal" value="paypal" name="paiement"
@@ -64,11 +122,14 @@ export default function Paiement() {
             <label htmlFor="radio-paypal" className="text-gray-700">PayPal</label>
           </div>
 
-          {moyenPaiement === "carte" && (
+          {moyenPaiement === "stripe" && (
             <div className="space-y-3 p-5 border rounded-xl bg-gray-50 mt-3">
-              <input type="text" placeholder="Numéro de carte" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
-              <input type="text" placeholder="Date d'expiration (MM/AA)" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
-              <input type="text" placeholder="CVV" className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400" />
+              <p className="text-sm text-gray-600 mb-3">💳 Paiement sécurisé avec Stripe</p>
+              <StripeCheckout 
+                amount={oneTimeTotal + monthlyTotal}
+                onSuccess={handleStripeSuccess}
+                onError={handleStripeError}
+              />
             </div>
           )}
         </div>
@@ -84,11 +145,23 @@ export default function Paiement() {
         </div>
 
         {/* Bouton */}
-        <button type="submit" disabled={!conditions}
-          className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-gray-800 disabled:bg-gray-300 transition"
-        >
-          Valider l'adoption
-        </button>
+        {moyenPaiement === "paypal" && (
+          <button type="submit" disabled={!conditions || cartItems.length === 0}
+            className={`w-full py-3 rounded-xl font-semibold transition ${
+              !conditions || cartItems.length === 0
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-black text-white hover:bg-gray-800"
+            }`}
+          >
+            {cartItems.length === 0 ? "Panier vide" : "Payer avec PayPal"}
+          </button>
+        )}
+        
+        {moyenPaiement === "stripe" && (
+          <div className="text-center text-sm text-gray-600">
+            Le paiement Stripe se fait via le formulaire ci-dessus
+          </div>
+        )}
       </form>
     </div>
   );
