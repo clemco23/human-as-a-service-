@@ -22,10 +22,15 @@ type CartContextType = {
 };
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  
   const [cartItems, setCartItems] = useState<CartHumanItem[]>(() => {
     const stored = localStorage.getItem('cartItems');
     return stored ? JSON.parse(stored) : [];
@@ -36,6 +41,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   }, [cartItems]);
 
   const addToCart = (item: CartHumanItem) => {
+    // Vérifier si l'utilisateur est connecté avant d'ajouter au panier
+    if (!isAuthenticated) {
+      navigate('/connect');
+      return {
+        success: false,
+        message: "Vous devez être connecté pour ajouter des articles au panier"
+      };
+    }
+
     // Vérification plus précise : même ID ET même titre pour éviter les conflits
     const existingItem = cartItems.find(cartItem => 
       cartItem.id === item.id && cartItem.title === item.title
