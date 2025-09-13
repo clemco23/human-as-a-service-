@@ -7,8 +7,8 @@ import {
   useElements
 } from '@stripe/react-stripe-js';
 
-// Clé publique Stripe (à remplacer par votre vraie clé)
-const stripePromise = loadStripe('pk_test_51234567890abcdef...');
+// Clé publique Stripe depuis les variables d'environnement
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || 'pk_test_51234567890abcdef...');
 
 interface CheckoutFormProps {
   amount: number;
